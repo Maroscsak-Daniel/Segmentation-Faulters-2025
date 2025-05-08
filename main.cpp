@@ -20,7 +20,7 @@ int main() {
  //    return 0;
 
 
-	ProductRepo repo; //															|
+	ProductRepo repo2; //															|
 	//																				|
 	string id = "A123"; //															|
 	string name = "Apfel"; //														|
@@ -30,7 +30,7 @@ int main() {
 	if (Validator::validateId(id) && Validator::validateName(name) //				| Created a Validator class for P4.
 		&& Validator::validatePrice(price) && Validator::validateStock(stock)) { //	| You can now add Products to Repo.
 		Product p(id, name, price, stock); //									|
-		if (repo.addProduct(p)) { //												| Feel free to delete or comment
+		if (repo2.addProduct(p)) { //												| Feel free to delete or comment
 			cout << "Produkt hinzugefugt.\n"; //									| this part of the code, it's here
 		} else { //																	| just or debugging purposes to
 			cout << "Produkt-ID bereits vorhanden.\n"; //							| check if everything works as
@@ -39,7 +39,7 @@ int main() {
 	else { //																		|
 		cout << "Ungultige Produktdaten.\n"; //										|
 	} //																			|
-	vector<Product> allProducts = repo.getAvailableProductsSortedByPrice(); //		| P3, no print function yet tho.
+	vector<Product> allProducts = repo2.getAvailableProductsSortedByPrice(); //		| P3, no print function yet tho.
   cout << endl;
 	cout << "=== TEST START ===" << endl;
 
@@ -73,8 +73,8 @@ int main() {
 		return 0;
 	}
 
-	UserRepo repo;
-	repo.addUser(User("admin@store.com", "parola123", "employee"));
+	UserRepo repos;
+	repos.addUser(User("admin@store.com", "parola123", "employee"));
 
 	std::string email, password;
 	std::cout << "Email: ";
@@ -82,7 +82,7 @@ int main() {
 	std::cout << "Password: ";
 	std::cin >> password;
 
-	if (AuthService::login(repo, email, password)) {
+	if (AuthService::login(repos, email, password)) {
 		std::cout << "Login successful!\n";
 	} else {
 		std::cout << "Invalid credentials.\n";
