@@ -12,10 +12,16 @@ add_executable(Segmentation_Faulters_2025
         User/UserServices.cpp
         User/UserServices.h
         User/UserTests.cpp
+
         Order/Bestellung_repo.cpp
         Order/Bestellung_repo.h
+
         Customer/Customer.cpp
         Customer/CustomerRepo.cpp
         Employee/Employee.cpp
-        Employee/EmployeeRepo.cpp)
+        Employee/EmployeeRepo.cpp
+
+        Product/Product.cpp
+        Product/ProductRepo.cpp
+        Product/Validator.cpp)
 
