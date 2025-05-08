@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 3.31)
-project(ProjectOOP2025)
+cmake_minimum_required(VERSION 3.30)
+project(Segmentation_Faulters_2025)
 
 set(CMAKE_CXX_STANDARD 14)
-
-add_executable(ProjectOOP2025
+add_executable(Segmentation_Faulters_2025
         main.cpp
         User/User.cpp
         User/User.h
@@ -11,4 +10,6 @@ add_executable(ProjectOOP2025
         User/UserRepo.h
         User/UserServices.cpp
         User/UserServices.h
-        User/UserTests.cpp)
+        User/UserTests.cpp
+        Bestellung_repo.cpp
+        Bestellung_repo.h)
