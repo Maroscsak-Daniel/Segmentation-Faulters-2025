@@ -11,7 +11,7 @@ add_executable(Segmentation_Faulters_2025
         User/UserRepo.h
         User/UserServices.cpp
         User/UserServices.h
-        User/UserTests.cpp
+        Tests/UserTests.cpp
 
         Order/Bestellung_repo.cpp
         Order/Bestellung_repo.h

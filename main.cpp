@@ -11,10 +11,14 @@
 #include "Employee/EmployeeRepo.h"
 #include "User/UserRepo.h"
 #include "User/UserServices.h"
+#include "Tests/UserTests.h"
+
 
 
 using namespace std;
-void teste();
+void testsUser();
+
+
 int main() {
 	// cout << "End my suffering" << endl;
  //    return 0;
@@ -69,7 +73,7 @@ int main() {
 	std::cin >> opt;
 
 	if (opt == 2) {
-		teste();
+		testsUser();
 		return 0;
 	}
 
