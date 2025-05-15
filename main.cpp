@@ -11,14 +11,14 @@
 #include "Employee/EmployeeRepo.h"
 #include "User/UserRepo.h"
 #include "User/UserServices.h"
-#include "Tests/UserTests.h"
-
+#include "UI_USER/CustomerMenu.h"
+#include "UI_USER/EmployeeMenu.h"
+#include "UI_USER/LoginUI.h"
 
 
 using namespace std;
-void testsUser();
-
-
+using namespace Validate;
+void teste();
 int main() {
 	// cout << "End my suffering" << endl;
  //    return 0;
@@ -31,8 +31,8 @@ int main() {
 	double price = 1.5; //															| P1, P2, P3, P4 is done.
 	int stock = 10; //																| Product Class done.
 	//																				| Product Repo Class done.
-	if (Validator::validateId(id) && Validator::validateName(name) //				| Created a Validator class for P4.
-		&& Validator::validatePrice(price) && Validator::validateStock(stock)) { //	| You can now add Products to Repo.
+	if (validateID(id) && validateName(name) //					| Created a Validator class for P4.
+		&& validatePrice(price) && validateStock(stock)) { //	| You can now add Products to Repo.
 		Product p(id, name, price, stock); //									|
 		if (repo2.addProduct(p)) { //												| Feel free to delete or comment
 			cout << "Produkt hinzugefugt.\n"; //									| this part of the code, it's here
@@ -45,27 +45,27 @@ int main() {
 	} //																			|
 	vector<Product> allProducts = repo2.getAvailableProductsSortedByPrice(); //		| P3, no print function yet tho.
   cout << endl;
-	cout << "=== TEST START ===" << endl;
-
-	// Test Customer
-	Customer c("John", "Doe", "john.doe@example.com", "+123456789", "Main Street 1", "Important client", false);
-	cout << c << endl;
-
-	// Anonymize and print again
-	c.anonymize(42);
-	cout << "After anonymization:\n" << c << endl;
-
-	// Test Employee and EmployeeRepo
-	Employeerepo repo;
-	Employee e("Jane", "Smith", "jane.smith@example.com", "Developer", "15.06.1995", "JS95", 1500, "Senior dev");
-	try {
-		repo.addEmployee(e);
-		cout << "Added employee:\n" << e << endl;
-	} catch (const exception& ex) {
-		cerr << "Error adding employee: " << ex.what() << endl;
-	}
-
-	cout << "=== TEST END ===" << endl;
+	// cout << "=== TEST START ===" << endl;
+	//
+	// // Test Customer
+	// Customer c("John", "Doe", "john.doe@example.com", "+123456789", "Main Street 1", "Important client", false);
+	// cout << c << endl;
+	//
+	// // Anonymize and print again
+	// c.anonymize(42);
+	// cout << "After anonymization:\n" << c << endl;
+	//
+	// // Test Employee and EmployeeRepo
+	// Employeerepo repo;
+	// Employee e("Jane", "Smith", "jane.smith@example.com", "Developer", "15.06.1995", "JS95", 1500, "Senior dev");
+	// try {
+	// 	repo.addEmployee(e);
+	// 	cout << "Added employee:\n" << e << endl;
+	// } catch (const exception& ex) {
+	// 	cerr << "Error adding employee: " << ex.what() << endl;
+	// }
+	//
+	// cout << "=== TEST END ===" << endl;
   
   
 	int opt;
@@ -73,7 +73,7 @@ int main() {
 	std::cin >> opt;
 
 	if (opt == 2) {
-		testsUser();
+		teste();
 		return 0;
 	}
 
@@ -91,6 +91,7 @@ int main() {
 	} else {
 		std::cout << "Invalid credentials.\n";
 	}
+
 
 	return 0;
 }

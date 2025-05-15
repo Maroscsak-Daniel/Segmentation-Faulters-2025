@@ -9,13 +9,12 @@
 using namespace std;
 
 
-class Validator {
-public:
-	static bool validateId(const string& id);
-	static bool validateName(const string& name);
-	static bool validatePrice(double price);
-	static bool validateStock(int stock);
-};
+namespace Validate {
+	bool validateID(const string& id);
+	bool validateName(const string& name);
+	bool validatePrice(double price);
+	bool validateStock(int stock);
+}
 
 
 

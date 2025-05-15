@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.30)
-
 project(Segmentation_Faulters_2025)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -23,5 +22,13 @@ add_executable(Segmentation_Faulters_2025
 
         Product/Product.cpp
         Product/ProductRepo.cpp
-        Product/Validator.cpp)
+        Product/Validator.cpp
+        Product/Validator.cpp
+        
+        UI_USER/LoginUI.cpp
+        UI_USER/LoginUI.h
+        UI_USER/CustomerMenu.cpp
+        UI_USER/CustomerMenu.h
+        UI_USER/EmployeeMenu.cpp
+        UI_USER/EmployeeMenu.h)
 

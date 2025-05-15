@@ -5,22 +5,24 @@
 #include "Validator.h"
 #include <cctype>
 
-bool Validator::validateId(const string& id) {
-	if (id.empty()) return false;
-	for (char ch : id) {
-		if (!isalnum(ch)) return false;
+namespace Validate {
+	bool validateID(const string& id) {
+		if (id.empty()) return false;
+		for (char ch : id) {
+			if (!isalnum(ch)) return false;
+		}
+		return true;
 	}
-	return true;
-}
 
-bool Validator::validateName(const string& name) {
-	return !name.empty();
-}
+	bool validateName(const string& name) {
+		return !name.empty();
+	}
 
-bool Validator::validatePrice(double price) {
-	return price >= 0;
-}
+	bool validatePrice(double price) {
+		return price >= 0;
+	}
 
-bool Validator::validateStock(int stock) {
-	return stock >= 0;
+	bool validateStock(int stock) {
+		return stock >= 0;
+	}
 }
