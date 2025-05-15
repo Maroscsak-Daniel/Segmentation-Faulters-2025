@@ -11,6 +11,9 @@
 #include "Employee/EmployeeRepo.h"
 #include "User/UserRepo.h"
 #include "User/UserServices.h"
+#include "UI_USER/CustomerMenu.h"
+#include "UI_USER/EmployeeMenu.h"
+#include "UI_USER/LoginUI.h"
 
 
 using namespace std;
@@ -42,27 +45,27 @@ int main() {
 	} //																			|
 	vector<Product> allProducts = repo2.getAvailableProductsSortedByPrice(); //		| P3, no print function yet tho.
   cout << endl;
-	cout << "=== TEST START ===" << endl;
-
-	// Test Customer
-	Customer c("John", "Doe", "john.doe@example.com", "+123456789", "Main Street 1", "Important client", false);
-	cout << c << endl;
-
-	// Anonymize and print again
-	c.anonymize(42);
-	cout << "After anonymization:\n" << c << endl;
-
-	// Test Employee and EmployeeRepo
-	Employeerepo repo;
-	Employee e("Jane", "Smith", "jane.smith@example.com", "Developer", "15.06.1995", "JS95", 1500, "Senior dev");
-	try {
-		repo.addEmployee(e);
-		cout << "Added employee:\n" << e << endl;
-	} catch (const exception& ex) {
-		cerr << "Error adding employee: " << ex.what() << endl;
-	}
-
-	cout << "=== TEST END ===" << endl;
+	// cout << "=== TEST START ===" << endl;
+	//
+	// // Test Customer
+	// Customer c("John", "Doe", "john.doe@example.com", "+123456789", "Main Street 1", "Important client", false);
+	// cout << c << endl;
+	//
+	// // Anonymize and print again
+	// c.anonymize(42);
+	// cout << "After anonymization:\n" << c << endl;
+	//
+	// // Test Employee and EmployeeRepo
+	// Employeerepo repo;
+	// Employee e("Jane", "Smith", "jane.smith@example.com", "Developer", "15.06.1995", "JS95", 1500, "Senior dev");
+	// try {
+	// 	repo.addEmployee(e);
+	// 	cout << "Added employee:\n" << e << endl;
+	// } catch (const exception& ex) {
+	// 	cerr << "Error adding employee: " << ex.what() << endl;
+	// }
+	//
+	// cout << "=== TEST END ===" << endl;
   
   
 	int opt;
@@ -88,6 +91,7 @@ int main() {
 	} else {
 		std::cout << "Invalid credentials.\n";
 	}
+
 
 	return 0;
 }

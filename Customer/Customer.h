@@ -3,10 +3,13 @@
 
 #include <iostream>
 #include <string>
+#include "../User/User.h"
+
 
 using namespace std;
 
-class Customer {
+class Customer final : public User {
+
 private:
 	string firstName;
 	string lastName;
@@ -20,12 +23,14 @@ public:
 	// Constructors
 	Customer();
 	Customer(const string& firstName,
-			 const string& lastName,
-			 const string& email,
-			 const string& phone,
-			 const string& address,
-			 const string& remarks,
-			 bool gdprDeleted = false);
+		 const string& lastName,
+		 const string& email,
+		 const string& password,
+		 const string& phone,
+		 const string& address,
+		 const string& remarks,
+		 bool gdprDeleted);
+
 
 	// Getters
 	string getFirstName() const;
