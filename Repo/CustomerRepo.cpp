@@ -1,7 +1,8 @@
 //
 // Created by Cezara on 03.05.2025.
 //
-#include "CustomerRepo.h"
+#include "../Repo/CustomerRepo.h"
+#include "../Domain/Customer.h"
 #include <algorithm>
 #include <stdexcept>
 

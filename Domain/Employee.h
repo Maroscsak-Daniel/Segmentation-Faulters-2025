@@ -4,7 +4,7 @@
 
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
-#include "../User/User.h"
+#include "User.h"
 #include <iostream>
 #include <string>
 

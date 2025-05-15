@@ -2,7 +2,7 @@
 // Created by user on 14.05.2025.
 //
 #include "LoginUI.h"
-#include "../User/UserServices.h"  // pentru AuthService
+#include "../Services/UserServices.h"  // pentru AuthService
 #include <iostream>
 #include "CustomerMenu.h"
 #include "EmployeeMenu.h"

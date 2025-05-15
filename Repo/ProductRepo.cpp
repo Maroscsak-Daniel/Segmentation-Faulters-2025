@@ -3,6 +3,7 @@
 //
 
 #include "ProductRepo.h"
+#include "../Domain/Product.h"
 #include <algorithm>
 
 bool ProductRepo::productExists(const string& id) const {

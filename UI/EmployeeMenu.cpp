@@ -1,6 +1,6 @@
 // EmployeeMenu.cpp
 #include "EmployeeMenu.h"
-#include "../Employee/Employee.h"
+#include "../Domain/Employee.h"
 #include <iostream>
 
 using namespace std;

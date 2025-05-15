@@ -1,7 +1,7 @@
 // CustomerMenu.cpp
 #include "CustomerMenu.h"
 #include <iostream>
-#include "../Customer/Customer.h"
+#include "../Domain/Customer.h"
 
 using namespace std;
 

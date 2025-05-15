@@ -4,7 +4,7 @@
 #ifndef CUSTOMER_REPO_H
 #define CUSTOMER_REPO_H
 
-#include "customer.h"
+#include "../Domain/Customer.h"
 #include <vector>
 
 using namespace std;
