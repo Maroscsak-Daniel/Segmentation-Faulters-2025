@@ -14,6 +14,7 @@
 
 
 using namespace std;
+using namespace Validate;
 void teste();
 int main() {
 	// cout << "End my suffering" << endl;
@@ -27,8 +28,8 @@ int main() {
 	double price = 1.5; //															| P1, P2, P3, P4 is done.
 	int stock = 10; //																| Product Class done.
 	//																				| Product Repo Class done.
-	if (Validator::validateId(id) && Validator::validateName(name) //				| Created a Validator class for P4.
-		&& Validator::validatePrice(price) && Validator::validateStock(stock)) { //	| You can now add Products to Repo.
+	if (validateID(id) && validateName(name) //					| Created a Validator class for P4.
+		&& validatePrice(price) && validateStock(stock)) { //	| You can now add Products to Repo.
 		Product p(id, name, price, stock); //									|
 		if (repo2.addProduct(p)) { //												| Feel free to delete or comment
 			cout << "Produkt hinzugefugt.\n"; //									| this part of the code, it's here
