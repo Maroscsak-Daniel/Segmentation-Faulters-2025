@@ -4,13 +4,12 @@
 
 #ifndef BESTELLUNG_REPO_H
 #define BESTELLUNG_REPO_H
-//
-// Created by Laura Muresan on 08.05.2025.
-
 #include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
+
+
 struct Datum {
     int tag;
     int monat;
