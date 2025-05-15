@@ -3,13 +3,14 @@
 
 #include <iostream>
 #include <string>
-#include<vector>
+
+#include "../User/User.h"
 
 using namespace std;
 
-class Customer {
+class Customer final : public User {
+
 private:
-	static vector<Customer> customers;
 	string firstName;
 	string lastName;
 	string email;        // must be unique, valid format
@@ -22,12 +23,14 @@ public:
 	// Constructors
 	Customer();
 	Customer(const string& firstName,
-			 const string& lastName,
-			 const string& email,
-			 const string& phone,
-			 const string& address,
-			 const string& remarks,
-			 bool gdprDeleted = false);
+		 const string& lastName,
+		 const string& email,
+		 const string& password,
+		 const string& phone,
+		 const string& address,
+		 const string& remarks,
+		 bool gdprDeleted);
+
 
 	// Getters
 	string getFirstName() const;

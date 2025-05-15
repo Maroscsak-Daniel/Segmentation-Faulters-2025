@@ -9,20 +9,33 @@
 #include<vector>
 
 // Default constructor
+#include "Customer.h"
+#include <sstream>
+#include <iostream>
+#include <regex>
+
+// Default constructor
 Customer::Customer()
-    : firstName(""), lastName(""), email(""),
+    : User("", "", "customer"),  // Inițializare de bază
+      firstName(""), lastName(""), email(""),
       phone(""), address(""), remarks(""), gdprDeleted(false) {}
 
-// Parametrized constructor
+// Constructor complet (cu parolă)
 Customer::Customer(const string& firstName,
                    const string& lastName,
                    const string& email,
+                   const string& password,
                    const string& phone,
                    const string& address,
                    const string& remarks,
                    bool gdprDeleted)
-    : firstName(firstName), lastName(lastName), email(email),
-      phone(phone), address(address), remarks(remarks), gdprDeleted(gdprDeleted) {}
+    : User(email, password, "customer"),  // trimitem parola reală
+      firstName(firstName), lastName(lastName),
+      phone(phone), address(address),
+      remarks(remarks), gdprDeleted(gdprDeleted) {
+    this->email = email;  // deja inițializat în User, dar îl păstrezi și aici
+}
+
 
 // Getters
 string Customer::getFirstName() const { return firstName; }

@@ -6,23 +6,27 @@
 #include <sstream>
 #include <ctime>
 
-// Default constructor
 Employee::Employee()
-    : firstName(""), lastName(""), email(""), position(""),
+    : User("", "", "employee"),
+      firstName(""), lastName(""), email(""), position(""),
       birthDate("01.01.1970"), shortCode(""), salary(100), remarks("") {}
+
 
 // Parametrized constructor
 Employee::Employee(const string& firstName,
                    const string& lastName,
                    const string& email,
+                   const string& password,
                    const string& position,
                    const string& birthDate,
                    const string& shortCode,
                    double salary,
                    const string& remarks)
-    : firstName(firstName), lastName(lastName), email(email),
-      position(position), birthDate(birthDate), shortCode(shortCode),
-      salary(salary), remarks(remarks) {}
+    : User(email, password, "employee"),
+      firstName(firstName), lastName(lastName),
+      position(position), birthDate(birthDate),
+      shortCode(shortCode), salary(salary), remarks(remarks) {}
+
 
 // Getters
 string Employee::getFirstName() const { return firstName; }

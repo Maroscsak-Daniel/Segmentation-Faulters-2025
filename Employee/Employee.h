@@ -4,13 +4,13 @@
 
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
-
+#include "../User/User.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-class Employee {
+class Employee: public User {
 private:
 	string firstName;
 	string lastName;
@@ -25,13 +25,16 @@ public:
 	// Constructors
 	Employee();
 	Employee(const string& firstName,
-			 const string& lastName,
-			 const string& email,
-			 const string& position,
-			 const string& birthDate,
-			 const string& shortCode,
-			 double salary,
-			 const string& remarks);
+		 const string& lastName,
+		 const string& email,
+		 const string& password,
+		 const string& position,
+		 const string& birthDate,
+		 const string& shortCode,
+		 double salary,
+		 const string& remarks);
+
+
 
 	// Getters
 	string getFirstName() const;
