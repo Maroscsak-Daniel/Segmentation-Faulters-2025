@@ -13,8 +13,8 @@ add_executable(Segmentation_Faulters_2025
         User/UserServices.h
         User/UserTests.cpp
 
-        Order/Bestellung_repo.cpp
-        Order/Bestellung_repo.h
+        Order/Order.cpp
+        Order/Order.h
 
         Customer/Customer.cpp
         Customer/CustomerRepo.cpp
@@ -29,5 +29,7 @@ add_executable(Segmentation_Faulters_2025
         UI_USER/CustomerMenu.cpp
         UI_USER/CustomerMenu.h
         UI_USER/EmployeeMenu.cpp
-        UI_USER/EmployeeMenu.h)
+        UI_USER/EmployeeMenu.h
+        Order/Order_repo.cpp
+        Order/Order_repo.h)
 

@@ -11,6 +11,10 @@
 #define EMPLOYEE_REPOSITORY_H
 
 #include "Employee.h"
+#include "../Customer/Customer.h"
+#include "../Customer/CustomerRepo.h"
+#include "../Customer/CustomerRepo.cpp"
+
 #include <vector>
 
 using namespace std;
@@ -18,6 +22,7 @@ using namespace std;
 class Employeerepo {
 private:
 	vector<Employee> employees;
+	CustomerRepo& customerRepo;
 
 public:
 	bool emailExists(const string& email) const;
@@ -30,7 +35,8 @@ public:
 	Employee findByShortCode(const string& shortCode) const;
 	vector<Employee> findByName(const string& lastName, const string& firstName) const;
 	vector<Employee> findByBirthdateRange(const string& from, const string& to) const;
-	vector<Employee> getAllSorted() const;
+	vector<Customer> show_all_customers() const;
+
 };
 
 #endif

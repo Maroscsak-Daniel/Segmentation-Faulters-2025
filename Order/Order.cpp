@@ -1,11 +1,8 @@
-#include <iostream>
 #include <cstdlib>
-#include <string>
-#include "Bestellung_repo.h"
-using namespace std;
+#include <ctime>
+#include "Order.h"
 
-
-string generiereID(int laenge = 10) {
+string Order::generiereID(int laenge) {
     const string zeichen = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     string id;
     srand(time(0));

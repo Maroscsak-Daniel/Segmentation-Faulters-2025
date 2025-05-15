@@ -3,3 +3,8 @@
 //
 
 #include "CustomerRepo.h"
+
+const vector<Customer>& CustomerRepo::getAllCustomers() const {
+    return customers;
+}
+

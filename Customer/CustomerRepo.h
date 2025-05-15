@@ -4,7 +4,7 @@
 #ifndef CUSTOMER_REPO_H
 #define CUSTOMER_REPO_H
 
-#include "customer.h"
+#include "Customer.h"
 #include <vector>
 
 using namespace std;
@@ -24,7 +24,7 @@ public:
 	Customer findByEmail(const string& email) const;
 	Customer findByPhone(const string& phone) const;
 	vector<Customer> findByName(const string& lastName, const string& firstName) const;
-	vector<Customer> getAllSorted() const;
+	const vector<Customer>& getAllCustomers() const;
 };
 
 #endif
