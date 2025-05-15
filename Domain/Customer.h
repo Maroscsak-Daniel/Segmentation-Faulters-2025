@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include "../User/User.h"
 
+#include "User.h"
 
 using namespace std;
 
@@ -61,6 +61,8 @@ public:
 	// Utilities
 	string toString() const;
 	friend ostream& operator<<(ostream& os, const Customer& c);
+
+
 };
 
 #endif

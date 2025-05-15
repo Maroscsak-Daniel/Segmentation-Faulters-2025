@@ -5,7 +5,7 @@
 #ifndef PRODUCTREPO_H
 #define PRODUCTREPO_H
 
-#include "Product.h"
+#include "../Domain/Product.h"
 #include <iostream>
 #include <vector>
 using namespace std;

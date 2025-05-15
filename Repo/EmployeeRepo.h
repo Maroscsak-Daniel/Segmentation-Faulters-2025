@@ -6,7 +6,7 @@
 #ifndef EMPLOYEE_REPOSITORY_H
 #define EMPLOYEE_REPOSITORY_H
 
-#include "Employee.h"
+#include "../Domain/Employee.h"
 #include <vector>
 
 using namespace std;

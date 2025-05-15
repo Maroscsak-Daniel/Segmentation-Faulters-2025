@@ -6,6 +6,7 @@
 #include <sstream>
 #include<iostream>
 #include<regex>
+#include<vector>
 
 // Default constructor
 #include "Customer.h"
@@ -110,3 +111,5 @@ ostream& operator<<(ostream& os, const Customer& c) {
     os << c.toString();
     return os;
 }
+
+
