@@ -11,20 +11,24 @@ using namespace std;
 
 class CustomerRepo {
 private:
-	vector<Customer> customers;
+	static vector<Customer> customers;
 
 
 public:
 	bool emailExists(const string& email) const;
-	void addCustomer(const Customer& c);
-	void updateCustomer(const string& email, const Customer& updated);
-	void deleteCustomer(const string& email); // doar dacă nu a comandat
 	void anonymizeCustomer(const string& email, int id);
 
 	Customer findByEmail(const string& email) const;
 	Customer findByPhone(const string& phone) const;
 	vector<Customer> findByName(const string& lastName, const string& firstName) const;
 	vector<Customer> getAllSorted() const;
+
+	//CRUD
+
+	void addCustomer(const Customer& customer);
+	Customer findCustomer(const string& email);
+	void updateCustomer(const Customer& customer);
+	void deleteCustomer(const Customer& customer);
 };
 
 #endif

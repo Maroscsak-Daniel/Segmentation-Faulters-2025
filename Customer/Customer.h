@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <string>
+#include<vector>
 
 using namespace std;
 
 class Customer {
 private:
+	static vector<Customer> customers;
 	string firstName;
 	string lastName;
 	string email;        // must be unique, valid format
@@ -56,6 +58,8 @@ public:
 	// Utilities
 	string toString() const;
 	friend ostream& operator<<(ostream& os, const Customer& c);
+
+
 };
 
 #endif
