@@ -1,8 +1,8 @@
 
 #include <iostream>
-#include "User.h"
-#include "UserRepo.h"
-#include "UserServices.h"
+#include "../Domain/User.h"
+#include "../Repo/UserRepo.h"
+#include "../Services/UserServices.h"
 
 void teste() {
     UserRepo repo;

@@ -1,7 +1,7 @@
 #ifndef LOGINUI_H
 #define LOGINUI_H
 
-#include "../User/UserRepo.h"
+#include "../Repo/UserRepo.h"
 
 class LoginUI {
 public:

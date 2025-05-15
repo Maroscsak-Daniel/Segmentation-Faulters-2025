@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "../User/User.h"
+#include "User.h"
 
 using namespace std;
 

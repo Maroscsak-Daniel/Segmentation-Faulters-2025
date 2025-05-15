@@ -3,17 +3,17 @@
 //
 #include <iostream>
 
-#include "Product/Product.h"
-#include "Product/ProductRepo.h"
-#include "Product/Validator.h"
-#include "Customer/Customer.h"
-#include "Employee/employee.h"
-#include "Employee/EmployeeRepo.h"
-#include "User/UserRepo.h"
-#include "User/UserServices.h"
-#include "UI_USER/CustomerMenu.h"
-#include "UI_USER/EmployeeMenu.h"
-#include "UI_USER/LoginUI.h"
+#include "Domain/Product.h"
+#include "Repo/ProductRepo.h"
+#include "Services/Validator.h"
+#include "Domain/Customer.h"
+#include "Domain/Employee.h"
+#include "Repo/EmployeeRepo.h"
+#include "Repo/UserRepo.h"
+#include "Services/UserServices.h"
+#include "UI/CustomerMenu.h"
+#include "UI/EmployeeMenu.h"
+#include "UI/LoginUI.h"
 
 
 using namespace std;
