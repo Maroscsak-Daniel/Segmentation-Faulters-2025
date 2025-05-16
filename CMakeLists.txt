@@ -11,7 +11,6 @@ add_library(app_lib
         Repo/UserRepo.h
         Services/UserServices.cpp
         Services/UserServices.h
-        Tests/UserTests.cpp
 
         Repo/Bestellung_repo.cpp
         Repo/Bestellung_repo.h
