@@ -4,7 +4,7 @@
 #include "../Repo/UserRepo.h"
 #include "../Services/UserServices.h"
 
-void teste() {
+void runUserTests() {
     UserRepo repo;
     repo.addUser(User("test@email.com", "parola123", "customer"));
 
