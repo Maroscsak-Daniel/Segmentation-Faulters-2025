@@ -18,7 +18,6 @@
 using namespace std;
 using namespace Validate;
 
-void UserTests();
 
 int main() {
 	// cout << "End my suffering" << endl;
@@ -68,15 +67,7 @@ int main() {
 	//
 	// cout << "=== TEST END ===" << endl;
   
-  
-	int opt;
-	std::cout << "1. Ruleaza aplicatia\n2. Ruleaza teste\nAlege: ";
-	std::cin >> opt;
-
-	if (opt == 2) {
-		UserTests();
-		return 0;
-	}
+	
 
 	UserRepo repos;
 	repos.addUser(User("admin@store.com", "parola123", "employee"));

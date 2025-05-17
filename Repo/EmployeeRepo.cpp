@@ -47,11 +47,11 @@ void Employeerepo::updateEmployee(const string& email, const Employee& updated) 
     throw runtime_error("Employee not found.");
 }
 
-Employee Employeerepo::findByEmail(const string& email) const{
-  for(auto& e:employees){
-    if(e.getEmail()==email)
-      return e;
-  }
+Employee Employeerepo::findByEmail(const string& email) const {
+    for(auto& e:employees){
+        if(e.getEmail()==email)
+            return e;
+    }
 }
 
 Employee Employeerepo::findByShortCode(const string& ShortCode) const{

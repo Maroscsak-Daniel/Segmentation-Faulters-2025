@@ -86,7 +86,7 @@ void testUser() {
 }
 
 
-void UserTests() {
+void runUserTests() {
     testCustomer();
     testEmployee();
     testUser();
