@@ -15,10 +15,10 @@
 #include "UI/EmployeeMenu.h"
 #include "UI/LoginUI.h"
 
-
 using namespace std;
 using namespace Validate;
-void teste();
+
+
 int main() {
 	// cout << "End my suffering" << endl;
  //    return 0;
@@ -67,15 +67,7 @@ int main() {
 	//
 	// cout << "=== TEST END ===" << endl;
   
-  
-	int opt;
-	std::cout << "1. Ruleaza aplicatia\n2. Ruleaza teste\nAlege: ";
-	std::cin >> opt;
-
-	if (opt == 2) {
-		teste();
-		return 0;
-	}
+	
 
 	UserRepo repos;
 	repos.addUser(User("admin@store.com", "parola123", "employee"));
