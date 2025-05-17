@@ -15,10 +15,11 @@
 #include "UI/EmployeeMenu.h"
 #include "UI/LoginUI.h"
 
-
 using namespace std;
 using namespace Validate;
-void teste();
+
+void UserTests();
+
 int main() {
 	// cout << "End my suffering" << endl;
  //    return 0;
@@ -73,7 +74,7 @@ int main() {
 	std::cin >> opt;
 
 	if (opt == 2) {
-		teste();
+		UserTests();
 		return 0;
 	}
 

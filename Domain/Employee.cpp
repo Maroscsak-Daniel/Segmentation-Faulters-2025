@@ -5,10 +5,10 @@
 #include "Employee.h"
 #include <sstream>
 #include <ctime>
-
+//din email("") am schimbat in email(email);
 Employee::Employee()
     : User("", "", "employee"),
-      firstName(""), lastName(""), email(""), position(""),
+      firstName(""), lastName(""), email(email), position(""),
       birthDate("01.01.1970"), shortCode(""), salary(100), remarks("") {}
 
 
@@ -31,7 +31,7 @@ Employee::Employee(const string& firstName,
 // Getters
 string Employee::getFirstName() const { return firstName; }
 string Employee::getLastName() const { return lastName; }
-string Employee::getEmail() const { return email; }
+string Employee::getEmail() const { return User::email; } //din return email am schimbat in return User::email
 string Employee::getPosition() const { return position; }
 string Employee::getBirthDate() const { return birthDate; }
 string Employee::getShortCode() const { return shortCode; }
