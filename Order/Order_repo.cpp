@@ -1,23 +1,18 @@
-#include "../Order/Order_repo.h"
+#include "Order_repo.h"
 
-vector<Order> OrderRepo::getAllOrders() const {
-    return orders;
-}
-
-void OrderRepo::make_order(
-    const Datum& datum,
-    const vector<Product>& produkte,
-    const string& kunde,
-    const string& mitarbeiter,
+void OrderRepository::createOrder(
+    const Date& date,
+    const vector<Product>& products,
+    const string& customer,
+    const string& employee,
     Status status
 ) {
     if (status != Status::Confirmed && status != Status::Reservation) return;
-    Order o(datum, status, produkte, kunde, mitarbeiter, 0.0);
+    Order o(date, status, products, customer, employee);
     orders.push_back(o);
 }
 
-
-Order* OrderRepo::findOrderById(const string& id) {
+Order* OrderRepository::findOrderById(const string& id) {
     for (auto& order : orders) {
         if (order.getId() == id) {
             return &order;
@@ -26,7 +21,7 @@ Order* OrderRepo::findOrderById(const string& id) {
     return nullptr;
 }
 
-const Order* OrderRepo::findOrderById(const string& id) const {
+const Order* OrderRepository::findOrderById(const string& id) const {
     for (const auto& order : orders) {
         if (order.getId() == id) {
             return &order;
@@ -35,46 +30,49 @@ const Order* OrderRepo::findOrderById(const string& id) const {
     return nullptr;
 }
 
-bool OrderRepo::StatusConfirmed(const string& ID, const string& employee) {
-    Order* order = findOrderById(ID);
-    if (!order) return false;
-    if (order->getStatus() != Status::Reservation) return false;
-    if (order->getemployee() != employee) return false;
+bool OrderRepository::confirmOrder(const string& id, const string& employee) {
+    Order* order = findOrderById(id);
+    if (!order || order->getStatus() != Status::Reservation || order->getEmployee() != employee)
+        return false;
 
     order->setStatus(Status::Confirmed);
     return true;
 }
 
-bool OrderRepo::StatusCompleted(const string& ID, const string& employee) {
-    Order* order = findOrderById(ID);
-    if (!order) return false;
-    if (order->getStatus() != Status::Confirmed) return false;
-    if (order->getemployee() != employee) return false;
+bool OrderRepository::completeOrder(const string& id, const string& employee) {
+    Order* order = findOrderById(id);
+    if (!order || order->getStatus() != Status::Confirmed || order->getEmployee() != employee)
+        return false;
 
     order->setStatus(Status::Completed);
     return true;
 }
 
-bool OrderRepo::change_products(const string& ID, const string& employee, const vector<Product>& neueProdukte) {
-    Order* order = findOrderById(ID);
-    if (!order) return false;
-    if (order->getStatus() == Status::Completed) return false;
-    if (order->getemployee() != employee) return false;
+bool OrderRepository::updateProducts(const string& id, const string& employee, const vector<Product>& newProducts) {
+    Order* order = findOrderById(id);
+    if (!order || order->getStatus() == Status::Completed || order->getEmployee() != employee)
+        return false;
 
-    order->setProducts(neueProdukte);
+    order->setProducts(newProducts);
     return true;
 }
 
-bool OrderRepo::takeoverorder(const string& ID, const string& employee) {
-    Order* order = findOrderById(ID);
+bool OrderRepository::takeOverOrder(const string& id, const string& employee) {
+    Order* order = findOrderById(id);
     if (!order) return false;
 
-    if (order->getemployee().empty()) {
-        order->setemployee(employee);
+    if (order->getEmployee().empty()) {
+        order->setEmployee(employee);
         return true;
     }
 
     return false;
 }
 
+vector<Order> OrderRepository::getAllOrders() const {
+    return orders;
+}
 
+const vector<Order>& OrderRepository::getOrders() const {
+    return orders;
+}

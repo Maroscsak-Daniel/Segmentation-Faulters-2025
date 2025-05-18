@@ -8,48 +8,53 @@
 
 using namespace std;
 
-struct Datum {
-    int tag;
-    int monat;
-    int jahr;
+struct Date {
+    int day;
+    int month;
+    int year;
 };
 
 enum class Status { Reservation, Confirmed, Completed };
 
+struct OrderedProduct {
+    Product product;
+    int quantity;
+
+    OrderedProduct(const Product& product, int quantity)
+        : product(product), quantity(quantity) {}
+
+    double totalPrice() const {
+        return product.getPrice() * quantity;
+    }
+};
+
 class Order {
 private:
-    string ID;
+    string id;
     Status status;
-    Datum bestelldatum;
-    vector<Product> produkte;
-    string kunde;
-    string mitarbeiter;
-    double gesamtsumme;
+    Date orderDate;
+    vector<Product> products;
+    string customer;
+    string employee;
+    double totalAmount;
 
-    string generiereID(int laenge = 10); // Private helper
+    string generateId(int length = 10);
+    double calculateTotalAmount(const vector<Product>& products);
 
 public:
-    Order(Datum datum, Status status, const vector<Product>& produkte,
-          const string& kunde, const string& mitarbeiter, double gesamtsumme)
-        : bestelldatum(datum),
-          status(status),
-          produkte(produkte),
-          kunde(kunde),
-          mitarbeiter(mitarbeiter),
-          gesamtsumme(gesamtsumme)
-    {
-        ID = generiereID();
-    }
+    Order(Date date, Status status, const vector<Product>& products,
+          const string& customer, const string& employee);
 
-    Status getStatus() const { return status; }
-    string getemployee() const { return mitarbeiter; }
-    void setStatus(Status s) { status = s; }
-    void setemployee(const string& m) { mitarbeiter = m; }
-    void setProducts(const vector<Product>& neueProdukte) { produkte = neueProdukte; }
-    const vector<Product>& getProducts() const { return produkte; }
-    string getId() const { return ID; }
-    string getCustomer() const { return kunde; }
+    Status getStatus() const;
+    string getEmployee() const;
+    string getCustomer() const;
+    string getId() const;
+    const vector<Product>& getProducts() const;
+    double getTotalAmount() const;
 
+    void setStatus(Status s);
+    void setEmployee(const string& e);
+    void setProducts(const vector<Product>& newProducts);
 };
 
 #endif // ORDER_H

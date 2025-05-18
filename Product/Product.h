@@ -27,6 +27,7 @@ public:
 	void setName(const string& newName);
 	void setPrice(double newPrice);
 	void setStock(int newStock);
+	int getQuantity() const { return stock; }
 };
 
 

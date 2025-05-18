@@ -1,30 +1,33 @@
-#ifndef ORDER_REPO_H
-#define ORDER_REPO_H
+#ifndef ORDER_REPOSITORY_H
+#define ORDER_REPOSITORY_H
 
 #include "../Order/Order.h"
 #include <vector>
 #include <string>
+
 using namespace std;
 
-class OrderRepo {
+class OrderRepository {
 private:
     vector<Order> orders;
 
 public:
+    void createOrder(const Date& date,
+                     const vector<Product>& products,
+                     const string& customer,
+                     const string& employee,
+                     Status status);
+
+    bool confirmOrder(const string& id, const string& employee);
+    bool completeOrder(const string& id, const string& employee);
+    bool updateProducts(const string& id, const string& employee, const vector<Product>& newProducts);
+    bool takeOverOrder(const string& id, const string& employee);
+
     vector<Order> getAllOrders() const;
-    void make_order(const Datum& datum,
-                const vector<Product>& produkte,
-                const string& kunde,
-                const string& mitarbeiter,
-                Status status);
-    bool StatusConfirmed(const string& ID, const string& employee);
-    bool StatusCompleted(const string& ID, const string& employee);
-    bool change_products(const string& ID, const string& employee, const vector<Product>& neueProdukte);
-    bool takeoverorder(const string& ID, const string& employee);
-    const vector<Order>& getBestellungen() const;
+    const vector<Order>& getOrders() const;
 
     Order* findOrderById(const string& id);
     const Order* findOrderById(const string& id) const;
 };
 
-#endif // ORDER_REPO_H
+#endif // ORDER_REPOSITORY_H
