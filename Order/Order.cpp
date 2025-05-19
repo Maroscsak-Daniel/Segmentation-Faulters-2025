@@ -59,6 +59,10 @@ double Order::getTotalAmount() const {
     return totalAmount;
 }
 
+Date Order::getDate() const {
+    return orderDate;
+}
+
 void Order::setStatus(Status s) {
     status = s;
 }
