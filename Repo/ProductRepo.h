@@ -21,7 +21,13 @@ public:
 	bool productExists(const string& id) const;
 	bool productIdExists(const string& id) const;
 
+	bool updateProduct(const string& id, const Product& updatedProduct);
+
+	bool deleteProduct(const string& id);
+
 	vector<Product> getAvailableProductsSortedByPrice() const;
+
+	Product getProductById(const string& id) const;
 };
 
 

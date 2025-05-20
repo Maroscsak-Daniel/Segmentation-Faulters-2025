@@ -14,6 +14,7 @@ namespace Validate {
 	bool validateName(const string& name);
 	bool validatePrice(double price);
 	bool validateStock(int stock);
+	bool validateDate(const string& date);
 }
 
 
