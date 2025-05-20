@@ -9,4 +9,5 @@ void runUserTests();
 int main(){
   runUserTests();
   return 0;
-  }
+}
+

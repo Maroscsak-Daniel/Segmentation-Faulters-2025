@@ -65,7 +65,8 @@ void testEmployee() {
 
 
 
-void testUser() {
+
+void runUserTests() {
     UserRepo repo;
 
     //Add tests

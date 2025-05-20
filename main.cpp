@@ -18,7 +18,6 @@
 using namespace std;
 using namespace Validate;
 
-
 int main() {
 	// cout << "End my suffering" << endl;
  //    return 0;
@@ -66,8 +65,6 @@ int main() {
 	// }
 	//
 	// cout << "=== TEST END ===" << endl;
-  
-	
 
 	UserRepo repos;
 	repos.addUser(User("admin@store.com", "parola123", "employee"));
