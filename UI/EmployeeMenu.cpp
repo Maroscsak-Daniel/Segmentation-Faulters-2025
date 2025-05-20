@@ -29,17 +29,32 @@ void EmployeeMenu::show() {
                 cout << "Salary: "; cin >> sal;
                 cout << "Remarks: "; cin.ignore(); getline(cin, remarks);
 
-                Employee* emp = new Employee(fn, ln, email, password, pos, bd, code, sal, remarks);
-                if (!emp->isValidSalary() || !emp->isValidAge()) {
-                    cout << "Invalid employee data.\n";
-                    delete emp;
-                } else {
-                    //adaugare user
-                }
-                break;
+                Employee emp(fn, ln, email, password, pos, bd, code, sal, remarks);
+
+            //     if (!emp.isValidSalary() || !emp.isValidAge()) {
+            //         cout << "Invalid employee data.\n";
+            //     } else {
+            //         try {
+            //             userRepo.addEmployee(emp);
+            //             cout << "Employee added successfully.\n";
+            //         } catch (const std::exception& ex) {
+            //             cout << "Error adding employee: " << ex.what() << "\n";
+            //         }
+            //     }
+            //     break;
+            // }
+            //
+            // case 2: {
+            //     vector<Employee> employees = userRepo.getAllSorted();
+            //     if (employees.empty()) {
+            //         cout << "No employees found.\n";
+            //     } else {
+            //         for (const auto& e : employees) {
+            //             cout << e.toString() << "\n";
+            //         }
+            //     }
+            //     break;
             }
-            case 2:
-               //neimplementat get all users
             case 0:
                 cout << "Logging out...\n";
                 break;

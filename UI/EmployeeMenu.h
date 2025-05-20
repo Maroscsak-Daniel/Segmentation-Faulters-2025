@@ -4,6 +4,8 @@
 
 #include "LoginUI.h"
 #include "../Repo/UserRepo.h"
+#include "../Repo/CustomerRepo.h"
+#include "../Repo/EmployeeRepo.h"
 
 class EmployeeMenu {
 private:

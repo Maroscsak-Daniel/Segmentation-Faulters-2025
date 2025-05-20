@@ -27,6 +27,11 @@ public:
 	void setName(const string& newName);
 	void setPrice(double newPrice);
 	void setStock(int newStock);
+
+
+	bool isValidProductID() const;
+	bool isValidStock() const;
+	bool isValidPrice() const;
 };
 
 
