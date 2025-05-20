@@ -1,17 +1,20 @@
 #include "LoginUI.h"
 #include "../Services/UserServices.h"
 #include "../Repo/UserRepo.h"
-#include <iostream>
-#include <iomanip>
-#include <limits>
 
 #include "EmployeeMenu.h"
 #include "CustomerMenu.h"
 
+#include <iostream>
+#include <iomanip>
+#include <limits>
 
 using namespace std;
 
-LoginUI::LoginUI(UserRepo& userRepoRef) : userRepo(userRepoRef) {}
+// ✅ Constructor corect cu referințe la toate repo-urile
+LoginUI::LoginUI(UserRepo& ur, CustomerRepo& cr, ProductRepo& pr)
+        : userRepo(ur), customerRepo(cr), productRepo(pr) {}
+
 void printLine() {
     cout << "=========================================\n";
 }
@@ -121,17 +124,19 @@ void LoginUI::displayRegisterMenu() {
     }
 }
 
+// ✅ Trimite și customerRepo, și productRepo la meniul angajatului
 void LoginUI::showEmployeeMenu() {
-    EmployeeMenu menu(userRepo);
+    EmployeeMenu menu(customerRepo, productRepo);
     menu.show();
 }
 
+// ✅ Trimite și customerRepo, și productRepo la meniul clientului
 void LoginUI::showCustomerMenu() {
-    CustomerMenu menu(userRepo);
+    CustomerMenu menu(customerRepo, productRepo);
     menu.show();
 }
 
-
+// Redirecționează utilizatorul la meniul potrivit
 void LoginUI::showMenuBasedOnRole(const std::string& role) {
     if (role == "employee") {
         showEmployeeMenu();

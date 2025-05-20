@@ -3,13 +3,16 @@
 
 #include "../Repo/UserRepo.h"
 #include "../Repo/ProductRepo.h"
+#include "../Repo/CustomerRepo.h"
 
 class LoginUI {
 private:
     UserRepo& userRepo;
+    CustomerRepo& customerRepo;
+    ProductRepo& productRepo;
 public:
     bool displayLoginMenu();
-    LoginUI(UserRepo& userRepoRef);
+    LoginUI(UserRepo& ur, CustomerRepo& cr, ProductRepo& pr);
     void showMenuBasedOnRole(const std::string& role);
     void displayInitialMenu();
     void displayRegisterMenu();
