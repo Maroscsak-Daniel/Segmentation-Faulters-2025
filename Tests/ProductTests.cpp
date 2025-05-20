@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../Domain/Product.h"
 #include "../Repo/ProductRepo.h"
-#include "../Services/Validator.h"
+#include "../Services/ProductValidator.h"
 
 void runProductTests() {
 	Product prod1("Tennis racket", 49.99, 9, "2025-03-01");
