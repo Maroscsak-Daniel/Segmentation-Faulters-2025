@@ -1,4 +1,3 @@
-
 #ifndef CUSTOMERMENU_H
 #define CUSTOMERMENU_H
 
@@ -7,9 +6,11 @@
 class CustomerMenu {
 private:
     UserRepo& userRepo;
+
 public:
-    CustomerMenu(UserRepo& repo) : userRepo(repo) {}
-    void show();
+    explicit CustomerMenu(UserRepo& repo);
+
+    static void show();
 };
 
-#endif
+#endif // CUSTOMERMENU_H
