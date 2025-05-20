@@ -39,12 +39,12 @@ bool Product::isValidProductID() const {
 	return true;
 }
 bool Product::isValidStock() const {
-	if (stock <= 0)
+	if (stock < 0)
 		return false;
 	return true;
 }
 bool Product::isValidPrice() const {
-	if (price <= 0)
+	if (price < 0)
 		return false;
 	return true;
 
