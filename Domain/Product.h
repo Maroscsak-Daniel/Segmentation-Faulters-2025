@@ -17,7 +17,7 @@ private:
 	double price;
 	int stock;
 public:
-	Product(string& id, string& name, double price, int stock);
+	Product(const string& id, const string& name, double price, int stock);
 
 	string getId() const;
 	string getName() const;

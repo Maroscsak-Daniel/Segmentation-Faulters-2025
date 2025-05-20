@@ -4,7 +4,7 @@
 
 #include "Product.h"
 
-Product::Product(string& id, string& name, double price, int stock)
+Product::Product(const string& id, const string& name, double price, int stock)
 	: id(id), name(name), price(price), stock(stock) {}
 
 string Product::getId() const {
