@@ -26,3 +26,27 @@ int Product::getStock() const {
 void Product::setName(const string& newName) { name = newName; }
 void Product::setPrice(double newPrice) { price = newPrice; }
 void Product::setStock(int newStock) { stock = newStock; }
+
+bool Product::isValidProductID() const {
+	if (id.empty())
+		return false;
+
+	for (char c : id) {
+		if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')))
+			return false;
+	}
+
+	return true;
+}
+bool Product::isValidStock() const {
+	if (stock < 0)
+		return false;
+	return true;
+}
+bool Product::isValidPrice() const {
+	if (price < 0)
+		return false;
+	return true;
+
+}
+

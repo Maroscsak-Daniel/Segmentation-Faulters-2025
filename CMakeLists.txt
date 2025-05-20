@@ -40,7 +40,9 @@ target_link_libraries(Segmentation_Faulters_2025 app_lib)
 # Create an executable for running tests
 add_executable(run_tests tests_main.cpp
         Tests/UserTests.cpp
-        Tests/ProductTests.cpp)
+        Tests/ProductTests.cpp
+        Tests/ClientTests.cpp
+)
 # Link the tests executable with the app_lib library
 target_link_libraries(run_tests app_lib)
 

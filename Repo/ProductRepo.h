@@ -19,6 +19,7 @@ public:
 	bool addProduct(const Product& product);  // returns false if duplicate
 	const vector<Product>& getAllProducts() const;
 	bool productExists(const string& id) const;
+	bool productIdExists(const string& id) const;
 
 	vector<Product> getAvailableProductsSortedByPrice() const;
 };

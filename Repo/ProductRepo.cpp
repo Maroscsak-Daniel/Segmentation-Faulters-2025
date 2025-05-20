@@ -37,3 +37,10 @@ vector<Product> ProductRepo::getAvailableProductsSortedByPrice() const {
 			  });
 	return result;
 }
+bool ProductRepo::productIdExists(const std::string& id) const {
+	for (const auto& p : products) {
+		if (p.getId() == id)
+			return true;
+	}
+	return false;
+}
