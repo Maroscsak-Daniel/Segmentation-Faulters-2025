@@ -4,6 +4,9 @@
 
 void runUserTests();
 
+void runProductTests();
+
 int main() {
-  runUserTests();
+	runUserTests();
+	runProductTests();
 }
