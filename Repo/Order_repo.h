@@ -1,7 +1,7 @@
 #ifndef ORDER_REPOSITORY_H
 #define ORDER_REPOSITORY_H
 
-#include "../Order/Order.h"
+#include "../Domain/Order.h"
 #include <vector>
 #include <string>
 

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../Product/Product.h"
+#include "../Domain/Product.h"
 
 using namespace std;
 

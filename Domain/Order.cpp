@@ -30,7 +30,7 @@ string Order::generateId(int length) {
 double Order::calculateTotalAmount(const vector<Product>& products) {
     double sum = 0.0;
     for (const auto& product : products) {
-        sum += product.getPrice() * product.getQuantity();
+        sum += product.getPrice() * product.getStock();
     }
     return sum;
 }
