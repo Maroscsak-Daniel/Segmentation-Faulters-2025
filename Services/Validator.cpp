@@ -3,7 +3,7 @@
 
 namespace Validate {
 
-	bool validateID(const string& id) {
+	bool validateProductID(const string& id) {
 		if (id.empty()) return false;
 		for (char ch : id) {
 			if (!isalnum(ch)) return false;

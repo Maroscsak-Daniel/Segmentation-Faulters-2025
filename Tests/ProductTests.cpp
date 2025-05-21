@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../Domain/Product.h"
 #include "../Repo/ProductRepo.h"
-#include "../Services/ProductValidator.h"
+#include "../Services/Validator.h"
 
 void runProductTests() {
 	Product prod1("Tennis racket", 49.99, 9, "2025-03-01");
@@ -109,7 +109,7 @@ void runProductTests() {
 
 	if (Validate::validatePrice(checker.getPrice()) &&
 		Validate::validateStock(checker.getStock()) &&
-		Validate::validateID(checker.getId()))
+		Validate::validateProductID(checker.getId()))
 		cout << "All value validations passed!\n" << endl;
 	else {
 		cout << "Failure in one or more field validations: VALIDATION TEST FAILED" << endl;
