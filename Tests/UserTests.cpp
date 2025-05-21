@@ -1,95 +1,126 @@
-#include <cassert>
 #include <iostream>
-#include "../Domain/Customer.h"
-#include "../Repo/CustomerRepo.h"
 #include "../Domain/User.h"
 #include "../Repo/UserRepo.h"
 #include "../Services/UserServices.h"
-#include "../Domain/Employee.h"
-#include "../Repo/EmployeeRepo.h"
-using namespace std;
-
-void testCustomer(){
-    Customer customer("Maria", "Popa", "maria.popa@gmail.com", "parola123", "+40740000000",
-               "Str. Oltului 29", "client", false);
-    //Getters tests
-    assert(customer.getEmail() == "maria.popa@gmail.com");
-    assert(customer.isGdprDeleted() == false);
-
-    //Setters tests
-    customer.setAddress("Oltului, 30");
-    assert(customer.getAddress() == "Oltului, 30");
-    customer.setPhone("0722333444");
-    assert(customer.getPhone() == "0722333444");
-
-    //Validation tests
-    assert(customer.isValidEmail() == true);
-    assert(customer.isValidPhone() == true);
-    assert(customer.isValid() == true);
-
-}
-
-
-void testEmployee() {
-    Employee employee("Andrei", "Popa", "andrei.popa@gmail.com", "parola456", "director", "22.01.2000", "456", 900, "excellent manager");
-
-    //Getters tests
-    assert(employee.getFirstName() == "Andrei");
-    assert(employee.getEmail() == "andrei.popa@gmail.com"); // by default from User
-    assert(employee.getShortCode() == "456");
-
-    //Setters tests
-    employee.setPosition("director");
-    assert(employee.getPosition() == "director");
-    employee.setFirstName("David");
-    assert(employee.getFirstName() == "David");
-
-    //Validation tests
-    assert(employee.isValidSalary() == true);
-    assert(employee.getAge() == 25);
-    assert(employee.isValidAge() == true);
-
-    //EmployeeRepo tests
-    Employeerepo repo;
-
-    Employee original("Marius", "Toma", "marius.toma@gmail.com", "parola789", "manager", "09.08.2000", "789", 500, "good manager");
-    Employee updatedEmployee("Marius2", "Toma2", "marius.toma@gmail.com", "parola7892", "manager", "09.08.2002", "7892", 502, "bad manager");
-
-    repo.addEmployee(original);
-    assert(repo.emailExists("marius.toma@gmail.com") == true);
-    repo.updateEmployee("marius.toma@gmail.com", updatedEmployee);
-    Employee e = repo.findByShortCode("7892");
-    assert(e.getFirstName() == "Marius2");
-
-}
-
-
-
 
 void runUserTests() {
     UserRepo repo;
+    repo.addUser(User("test@email.com", "Parola1", "customer"));
 
-    //Add tests
-    repo.addUser(User("test@gmail.com", "parola123", "customer"));
+    std::cout << "[TEST 1] Login corect: ";
+    if (AuthService::login(repo, "test@email.com", "Parola1"))
+        std::cout << "PASSED\n";
+    else
+        std::cout << "FAILED\n";
 
-    //Login tests
-    AuthService authservice;
-    assert(authservice.login(repo, "test@gmail.com", "parola123") == true);
-    assert(authservice.login(repo, "alt@gmail.com", "parola123") == false);
+    std::cout << "[TEST 2] Login greșit (email incorect): ";
+    if (!AuthService::login(repo, "alt@email.com", "Parola1"))
+        std::cout << "PASSED\n";
+    else
+        std::cout << "FAILED\n";
 
-    //User tests
-    User user("john.doe@gmail.com", "password123", "employee");
+    std::cout << "[TEST 3] Login greșit (parolă incorectă): ";
+    if (!AuthService::login(repo, "test@email.com", "parola123"))
+        std::cout << "PASSED\n";
+    else
+        std::cout << "FAILED\n";
 
-    assert(user.getEmail() == "john.doe@gmail.com");
-    assert(user.getRole() == "employee");
-    assert(user.verifyPassword("password123") == true);
+    AuthService authService;  // instanță pentru metode non-statice-am avut problema ca nu le-am declarat toate static initial
 
-}
+    std::cout << "[TEST 4] Înregistrare utilizator valid: ";
+    bool regResult = authService.registerUser(repo, "newuser@email.com", "Pass2", "employee");
+    if (regResult)
+        std::cout << "PASSED\n";
+    else
+        std::cout << "FAILED (" << authService.getLastError() << ")\n";
 
+    std::cout << "[TEST 5] Înregistrare cu email deja folosit: ";
+    regResult = authService.registerUser(repo, "test@email.com", "Pass2", "customer");
+    if (!regResult)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
 
-void runUserTests() {
-    testCustomer();
-    testEmployee();
-    testUser();
-    cout<<"User tests: PASSED"<<endl;
+    std::cout << "[TEST 6] Înregistrare cu parolă invalidă: ";
+    regResult = authService.registerUser(repo, "another@email.com", "pass", "customer");
+    if (!regResult)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+
+    std::cout << "[TEST 7] Înregistrare cu email invalid: ";
+    regResult = authService.registerUser(repo, "invalidemail", "Pass1", "customer");
+    if (!regResult)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+
+    std::cout << "[TEST 8] Înregistrare cu rol invalid: ";
+    regResult = authService.registerUser(repo, "valid@email.com", "Pass1", "manager");
+    if (!regResult)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+    std::cout << "[TEST 9] Email cu '@' la început: ";
+    bool result = authService.registerUser(repo, "@invalid.com", "Pass1", "customer");
+    if (!result)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+
+    std::cout << "[TEST 10] Email cu mai multe '@': ";
+    result = authService.registerUser(repo, "a@@b.com", "Pass1", "customer");
+    if (!result)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+
+    std::cout << "[TEST Edge 11] Email fără '.' după '@': ";
+    result = authService.registerUser(repo, "a@bcom", "Pass1", "customer");
+    if (!result)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+
+    std::cout << "[TEST 12] Parolă minimă validă (4 caractere): ";
+    result = authService.registerUser(repo, "minpass@email.com", "A1bc", "customer");
+    if (result)
+        std::cout << "PASSED\n";
+    else
+        std::cout << "FAILED (" << authService.getLastError() << ")\n";
+
+    std::cout << "[TEST Edge 13] Parolă 4 caractere fără cifră: ";
+    result = authService.registerUser(repo, "nopassdigit@email.com", "Abcd", "customer");
+    if (!result)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+
+    std::cout << "[TEST 14] Parolă 4 caractere fără majusculă: ";
+    result = authService.registerUser(repo, "nopassupper@email.com", "a1bc", "customer");
+    if (!result)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+
+    std::cout << "[TEST Edge 15] Rol gol: ";
+    result = authService.registerUser(repo, "rolgol@email.com", "Pass1", "");
+    if (!result)
+        std::cout << "PASSED (" << authService.getLastError() << ")\n";
+    else
+        std::cout << "FAILED\n";
+
+    std::cout << "[TEST 16] Login pe repo gol: ";
+    UserRepo emptyRepo;
+    if (!AuthService::login(emptyRepo, "nou@email.com", "Pass1"))
+        std::cout << "PASSED\n";
+    else
+        std::cout << "FAILED\n";
+
+    repo.addUser(User("case@test.com", "Pass1", "customer"));
+    std::cout << "[TEST 17] Login cu parolă case-sensitive (majuscule diferite): ";
+    if (!AuthService::login(repo, "case@test.com", "pass1")) // parola corecta e Pass1, dar încercam pass1
+        std::cout << "PASSED\n";
+    else
+        std::cout << "FAILED\n";
 }

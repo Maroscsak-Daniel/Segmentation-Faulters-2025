@@ -3,26 +3,24 @@
 //
 
 #include "Product.h"
+#include <string>
 
-Product::Product(string& id, string& name, double price, int stock)
-	: id(id), name(name), price(price), stock(stock) {}
+int Product::nextID = 1;
 
-string Product::getId() const {
-	return id;
+Product::Product(const string& name, double price, int stock, const string& date)
+	: name(name), price(price), stock(stock), date(date) {
+	id = 'P' + to_string(nextID++);
 }
 
-string Product::getName() const {
-	return name;
-}
+// Getters
+string Product::getId() const { return id; }
+string Product::getName() const { return name; }
+double Product::getPrice() const { return price; }
+int Product::getStock() const { return stock; }
+string Product::getDate() const { return date; }
 
-double Product::getPrice() const {
-	return price;
-}
-
-int Product::getStock() const {
-	return stock;
-}
-
+// Setters
 void Product::setName(const string& newName) { name = newName; }
 void Product::setPrice(double newPrice) { price = newPrice; }
 void Product::setStock(int newStock) { stock = newStock; }
+void Product::setDate(const string& newDate) { date = newDate; }

@@ -1,13 +1,12 @@
 //
-// Created by Matei Ingrid on 17.05.2025.
+// Created by ion on 5/16/25.
 //
-#include <iostream>
-using namespace std;
 
 void runUserTests();
 
-int main(){
-  runUserTests();
-  return 0;
-}
+void runProductTests();
 
+int main() {
+	runUserTests();
+	runProductTests();
+}

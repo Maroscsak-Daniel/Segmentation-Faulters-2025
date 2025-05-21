@@ -11,17 +11,17 @@ add_library(app_lib
         Repo/UserRepo.h
         Services/UserServices.cpp
         Services/UserServices.h
-        
-        Repo/Bestellung_repo.cpp
-        Repo/Bestellung_repo.h
+
         Domain/Customer.cpp
         Repo/CustomerRepo.cpp
         Domain/Employee.cpp
         Repo/EmployeeRepo.cpp
+
         Domain/Product.cpp
         Repo/ProductRepo.cpp
-        Services/Validator.cpp
-        Services/Validator.cpp
+        Services/ProductValidator.cpp
+        Services/ProductValidator.cpp
+
         UI/LoginUI.cpp
         UI/LoginUI.h
         UI/CustomerMenu.cpp
@@ -29,16 +29,17 @@ add_library(app_lib
         UI/EmployeeMenu.cpp
         UI/EmployeeMenu.h)
 
-
 # Specify the main app executable, built from the main.cpp file
 add_executable(Segmentation_Faulters_2025 main.cpp)
-
 # The main app executable is to be linked with the app_lib library
 target_link_libraries(Segmentation_Faulters_2025 app_lib)
 
 # Create an executable for running tests
 add_executable(run_tests tests_main.cpp
-        Tests/UserTests.cpp)
+        Tests/UserTests.cpp
+        Tests/ProductTests.cpp
+        Tests/ClientTests.cpp
+)
 # Link the tests executable with the app_lib library
-
 target_link_libraries(run_tests app_lib)
+
