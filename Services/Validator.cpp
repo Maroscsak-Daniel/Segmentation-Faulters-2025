@@ -1,9 +1,9 @@
-#include "ProductValidator.h"
+#include "Validator.h"
 #include <cctype>
 
 namespace Validate {
 
-	bool validateID(const string& id) {
+	bool validateProductID(const string& id) {
 		if (id.empty()) return false;
 		for (char ch : id) {
 			if (!isalnum(ch)) return false;
@@ -46,5 +46,44 @@ namespace Validate {
 			daysInMonth[1] = 29;
 
 		return day <= daysInMonth[month - 1];
+	}
+
+	bool validateStatus(Status status) {
+		switch (status) {
+			case Status::Reservation:
+			case Status::Confirmed:
+			case Status::Completed:
+				return true;
+			default:
+				return false;
+		}
+	}
+
+	bool validateEmployee(const string& employee) {
+		return !employee.empty();  // optionally add stricter checks
+	}
+
+	bool validateCustomer(const string& customer) {
+		return !customer.empty();  // optionally add stricter checks
+	}
+
+	bool validateOrderID(const string& orderID) {
+		if (orderID.empty()) return false;
+		for (char ch : orderID) {
+			if (!isalnum(ch)) return false;
+		}
+		return true;
+	}
+
+	bool validateProducts(Product product) {
+		return validateName(product.getName()) &&
+			   validatePrice(product.getPrice()) &&
+			   validateStock(product.getStock()) &&
+			   validateDate(product.getDate()) &&
+			   validateProductID(product.getId());
+	}
+
+	bool validateTotalAmount(double amount) {
+		return amount >= 0;
 	}
 }

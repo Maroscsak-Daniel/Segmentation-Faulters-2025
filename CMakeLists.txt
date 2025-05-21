@@ -19,8 +19,8 @@ add_library(app_lib
 
         Domain/Product.cpp
         Repo/ProductRepo.cpp
-        Services/ProductValidator.cpp
-        Services/ProductValidator.cpp
+        Services/Validator.cpp
+        Services/Validator.cpp
 
         UI/LoginUI.cpp
         UI/LoginUI.h
