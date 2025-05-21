@@ -1,11 +1,12 @@
-// EmployeeMenu.cpp
 #include "EmployeeMenu.h"
+#include "../Repo/EmployeeRepo.h"
 #include "../Domain/Employee.h"
 #include <iostream>
 
 using namespace std;
 
 void EmployeeMenu::show() {
+
     int option;
     do {
         cout << "\nEmployee Menu:\n";
@@ -35,7 +36,7 @@ void EmployeeMenu::show() {
             //         cout << "Invalid employee data.\n";
             //     } else {
             //         try {
-            //             userRepo.addEmployee(emp);
+            //             // employeeRepo.addEmployee(emp);
             //             cout << "Employee added successfully.\n";
             //         } catch (const std::exception& ex) {
             //             cout << "Error adding employee: " << ex.what() << "\n";
@@ -45,7 +46,7 @@ void EmployeeMenu::show() {
             // }
             //
             // case 2: {
-            //     vector<Employee> employees = userRepo.getAllSorted();
+            //     // vector<Employee> employees = employeeRepo.getAllSorted();
             //     if (employees.empty()) {
             //         cout << "No employees found.\n";
             //     } else {
@@ -54,10 +55,12 @@ void EmployeeMenu::show() {
             //         }
             //     }
             //     break;
-            }
+            // }
+
             case 0:
                 cout << "Logging out...\n";
                 break;
+
             default:
                 cout << "Invalid option.\n";
         }

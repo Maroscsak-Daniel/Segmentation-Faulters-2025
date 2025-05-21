@@ -20,9 +20,10 @@ using namespace std;
 using namespace Validate;
 
 int main() {
-	// cout << "End my suffering" << endl;
- //    return 0;
 
+// 	// cout << "End my suffering" << endl;
+//  //    return 0;
+//
 	Product p("Apfel", 1.5, 10, "2023-02-28");
 	ProductRepo repo2; //															|
 	//																				|
@@ -44,27 +45,29 @@ int main() {
 	} //																			|
 	vector<Product> allProducts = repo2.getAvailableProductsSortedByPrice(); //		| P3, no print function yet tho.
   cout << endl;
-	// cout << "=== TEST START ===" << endl;
-	//
-	// // Test Customer
-	// Customer c("John", "Doe", "john.doe@example.com", "+123456789", "Main Street 1", "Important client", false);
-	// cout << c << endl;
-	//
-	// // Anonymize and print again
-	// c.anonymize(42);
-	// cout << "After anonymization:\n" << c << endl;
-	//
-	// // Test Employee and EmployeeRepo
-	// Employeerepo repo;
-	// Employee e("Jane", "Smith", "jane.smith@example.com", "Developer", "15.06.1995", "JS95", 1500, "Senior dev");
-	// try {
-	// 	repo.addEmployee(e);
-	// 	cout << "Added employee:\n" << e << endl;
-	// } catch (const exception& ex) {
-	// 	cerr << "Error adding employee: " << ex.what() << endl;
-	// }
-	//
-	// cout << "=== TEST END ===" << endl;
+	cout << "=== TEST START ===" << endl;
+
+	//Test Customer
+	 Customer c("John", "Doe", "john.doe@example.com", "secret123", "+123456789", "Main Street 1", "Important client", false);
+
+	cout << c << endl;
+
+	// Anonymize and print again
+	c.anonymize(42);
+	cout << "After anonymization:\n" << c << endl;
+
+	// Test Employee and EmployeeRepo
+	Employeerepo repo;
+	Employee e("Jane", "Smith", "janesmith@gmail.com", "parola123", "Developer", "08.09.2001", "234", 5000, "Senior Dev");
+
+	try {
+		repo.addEmployee(e);
+		cout << "Added employee:\n" << e << endl;
+	} catch (const exception& ex) {
+		cerr << "Error adding employee: " << ex.what() << endl;
+	}
+
+	cout << "=== TEST END ===" << endl;
 
 	UserRepo repos;
 	repos.addUser(User("admin@store.com", "parola123", "employee"));

@@ -13,6 +13,16 @@ bool ProductRepo::productExists(const string& id) const {
 	return false;
 }
 
+void ProductRepo::load_sample_data() const {
+	vector<Product> products;
+	products.emplace_back("Whole Wheat Bread", 6.50, 100, "2025-05-10");
+	products.emplace_back("Feta Cheese", 12.30, 50, "2025-05-15");
+	products.emplace_back("Electric Toothbrush", 79.99, 25, "2025-04-20");
+	products.emplace_back("Ariel Liquid Detergent", 38.75, 40, "2025-04-30");
+	products.emplace_back("Olive Oil 500ml", 22.40, 35, "2025-04-25");
+	products.emplace_back("Vacuum Cleaner Bosch", 499.99, 10, "2025-04-10");
+
+}
 bool ProductRepo::addProduct(const Product& product) {
 	if (productExists(product.getId()))
 		return false;  // ID must be unique

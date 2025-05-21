@@ -16,14 +16,21 @@ add_library(app_lib
         Repo/Bestellung_repo.h
 
         Domain/Customer.cpp
+        Domain/Customer.h
         Repo/CustomerRepo.cpp
+        Repo/CustomerRepo.h
+
         Domain/Employee.cpp
+        Domain/Employee.h
         Repo/EmployeeRepo.cpp
+        Repo/EmployeeRepo.h
 
         Domain/Product.cpp
+        Domain/Product.h
         Repo/ProductRepo.cpp
+        Repo/ProductRepo.h
         Services/ProductValidator.cpp
-        Services/ProductValidator.cpp
+        Services/ProductValidator.h
 
         UI/LoginUI.cpp
         UI/LoginUI.h
@@ -31,7 +38,6 @@ add_library(app_lib
         UI/CustomerMenu.h
         UI/EmployeeMenu.cpp
         UI/EmployeeMenu.h)
-
 # Specify the main app executable, built from the main.cpp file
 add_executable(Segmentation_Faulters_2025 main.cpp)
 # The main app executable is to be linked with the app_lib library

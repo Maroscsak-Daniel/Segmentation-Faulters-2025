@@ -3,10 +3,11 @@
 //
 
 void runUserTests();
-
+void runCustomerTests();
 void runProductTests();
 
 int main() {
 	runUserTests();
 	runProductTests();
+	runCustomerTests();
 }

@@ -9,7 +9,8 @@ int Product::nextID = 1;
 
 Product::Product(const string& name, double price, int stock, const string& date)
 	: name(name), price(price), stock(stock), date(date) {
-	id = 'P' + to_string(nextID++);
+	id = "P" + to_string(nextID++);
+
 }
 
 // Getters

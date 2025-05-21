@@ -17,6 +17,7 @@ private:
 
 public:
 	bool addProduct(const Product& product);  // returns false if duplicate
+	void load_sample_data() const;
 	const vector<Product>& getAllProducts() const;
 	bool productExists(const string& id) const;
 	bool productIdExists(const string& id) const;

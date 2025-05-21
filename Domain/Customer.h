@@ -20,8 +20,9 @@ private:
 	bool gdprDeleted;
 
 public:
-	// Constructors
 	Customer();
+	// Constructors
+	// Customer();
 	Customer(const string& firstName,
 		 const string& lastName,
 		 const string& email,
@@ -30,6 +31,8 @@ public:
 		 const string& address,
 		 const string& remarks,
 		 bool gdprDeleted);
+
+	;
 
 
 	// Getters
