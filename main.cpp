@@ -5,7 +5,7 @@
 
 #include "Domain/Product.h"
 #include "Repo/ProductRepo.h"
-#include "Services/Validator.h"
+#include "Services/ProductValidator.h"
 #include "Domain/Customer.h"
 #include "Domain/Employee.h"
 #include "Repo/EmployeeRepo.h"
@@ -23,17 +23,16 @@ int main() {
 	// cout << "End my suffering" << endl;
  //    return 0;
 
-
+	Product p("Apfel", 1.5, 10, "2023-02-28");
 	ProductRepo repo2; //															|
 	//																				|
-	string id = "A123"; //															|
+	string date = "2025-05-26"; //															|
 	string name = "Apfel"; //														|
 	double price = 1.5; //															| P1, P2, P3, P4 is done.
 	int stock = 10; //																| Product Class done.
 	//																				| Product Repo Class done.
-	if (validateID(id) && validateName(name) //					| Created a Validator class for P4.
-		&& validatePrice(price) && validateStock(stock)) { //	| You can now add Products to Repo.
-		Product p(id, name, price, stock); //									|
+	if (validateID(p.getId()) && validateName(p.getName()) //					| Created a Validator class for P4.
+		&& validatePrice(p.getPrice()) && validateStock(p.getStock()) && validateDate(p.getDate())) { //	| You can now add Products to Repo.
 		if (repo2.addProduct(p)) { //												| Feel free to delete or comment
 			cout << "Produkt hinzugefugt.\n"; //									| this part of the code, it's here
 		} else { //																	| just or debugging purposes to
