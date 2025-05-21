@@ -12,9 +12,6 @@ add_library(app_lib
         Services/UserServices.cpp
         Services/UserServices.h
 
-        Repo/Bestellung_repo.cpp
-        Repo/Bestellung_repo.h
-
         Domain/Customer.cpp
         Repo/CustomerRepo.cpp
         Domain/Employee.cpp
