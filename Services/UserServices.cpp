@@ -87,7 +87,31 @@ bool AuthService::isValidRole(const std::string& role) {
            role == "customer";
 }
 
+
+bool AuthService::changePassword(UserRepo& userRepo, const std::string& email, const std::string& oldPassword, const std::string& newPassword) {
+    User* user = userRepo.findUserByEmail(email);
+    if (!user) {
+        lastError = "User not found.";
+        return false;
+    }
+
+    if (!user->verifyPassword(oldPassword)) {
+        lastError = "Old password is incorrect.";
+        return false;
+    }
+
+    if (!isValidPassword(newPassword)) {
+        lastError = "New password is invalid. Must contain at least 4 characters, one uppercase letter and one digit.";
+        return false;
+    }
+
+    user->setPassword(newPassword);
+    return true;
+}
+
+
 const std::string& AuthService::getLastError() const {
     return lastError;
 }
+
 

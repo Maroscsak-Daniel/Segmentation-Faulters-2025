@@ -86,4 +86,38 @@ namespace Validate {
 	bool validateTotalAmount(double amount) {
 		return amount >= 0;
 	}
+
+	//Validator Customer:
+	bool isValidEmail(const string& email) {
+		// one "@" and at least one "."
+		size_t at = email.find('@');
+		if (at == -1 || at == 0 || at == email.size() - 1)
+			return false;
+
+		size_t dot = email.find('.', at);
+		return dot != -1 && dot < email.size() - 1;
+	}
+
+	bool isValidPhone(const string& phone) {
+		// only numbers allowed, "+" is optional
+		if (phone.empty()) return false;
+
+		size_t start = (phone[0] == '+') ? 1 : 0;
+		if (phone.length() - start < 6) return false; // ! at least 6 digits
+
+		for (size_t i = start; i < phone.size(); ++i) {
+			if (!isdigit(phone[i]) && phone[i] != ' ')
+				return false;
+		}
+		return true;
+	}
+
+	bool isValidAddress(const string& address) {
+		return !address.empty();
+	}
+
+	bool isNonEmpty(const string& field) {
+		return !field.empty();
+	}
+
 }

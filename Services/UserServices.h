@@ -19,4 +19,6 @@ public:
     static bool isValidRole(const std::string& role);
 
     const std::string& getLastError() const;  // getter pentru mesajul de eroare
+
+    bool changePassword(UserRepo& userRepo, const std::string& email, const std::string& oldPassword, const std::string& newPassword);
 };
