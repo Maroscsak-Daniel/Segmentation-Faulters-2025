@@ -13,6 +13,8 @@
 #include <sstream>
 #include <iostream>
 #include <regex>
+#include "../Services/Validator.h"
+
 
 // Default constructor
 Customer::Customer()
@@ -66,33 +68,21 @@ void Customer::anonymize(int id) {
     gdprDeleted = true;
 }
 
-// Validare email (format simplificat)
-bool Customer::isValidEmail() const {
-    const regex pattern(R"(^[\w\.-]+@[\w\.-]+\.\w{2,4}$)");
-    return regex_match(email, pattern);
-}
 
-// Validare telefon
-bool Customer::isValidPhone() const {
-    const regex pattern(R"(^\+?[0-9 ]*$)");
-    return regex_match(phone, pattern);
-}
-
-// Validare generală (K5)
 bool Customer::isValid() const {
     if (gdprDeleted) {
-        return !firstName.empty() && !lastName.empty();
-    } else {
-        return !firstName.empty() &&
-               !lastName.empty() &&
-               isValidEmail() &&
-               isValidPhone() &&
-               !phone.empty() &&
-               !email.empty() &&
-               !address.empty();
-        // remarks poate fi gol
+        return Validate::isNonEmpty(firstName) &&
+               Validate::isNonEmpty(lastName);
     }
+
+    return Validate::isNonEmpty(firstName) &&
+           Validate::isNonEmpty(lastName) &&
+           Validate::isValidEmail(email) &&
+           Validate::isValidPhone(phone) &&
+           Validate::isValidAddress(address);
 }
+
+
 
 // Afișare text
 string Customer::toString() const {

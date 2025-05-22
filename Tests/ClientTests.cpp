@@ -33,14 +33,14 @@ void runCustomerTests() {
 
     std::cout << "[TEST 3] Validare email incorect: ";
     Customer invalidEmail("Ana", "Ionescu", "emailInvalid", "Parola1", "+40712345678", "Str. Rozelor", "", false);
-    if (!invalidEmail.isValidEmail())
+    if (!invalidEmail.isValid())
         std::cout << "PASSED\n";
     else
         std::cout << "FAILED\n";
 
     std::cout << "[TEST 4] Validare telefon incorect: ";
     Customer invalidPhone("Ana", "Ionescu", "ana@email.com", "Parola1", "abc123", "Str. Rozelor", "", false);
-    if (!invalidPhone.isValidPhone())
+    if (!invalidPhone.isValid())
         std::cout << "PASSED\n";
     else
         std::cout << "FAILED\n";

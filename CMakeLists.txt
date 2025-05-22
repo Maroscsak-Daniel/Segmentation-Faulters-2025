@@ -3,10 +3,6 @@ project(Segmentation_Faulters_2025)
 
 set(CMAKE_CXX_STANDARD 14)
 
-#<<<<<<< HEAD
-#        Order/Order.cpp
-#        Order/Order.h
-#=======
 # create a library with the code required by the app, except for main.cpp
 add_library(app_lib
         Domain/User.cpp
@@ -16,22 +12,6 @@ add_library(app_lib
         Services/UserServices.cpp
         Services/UserServices.h
 
-#        Repo/Bestellung_repo.cpp
-#        Repo/Bestellung_repo.h
-#
-#<<<<<<< HEAD
-#        Product/Product.cpp
-#        Product/ProductRepo.cpp
-#        Product/Validator.cpp
-#        UI_USER/LoginUI.cpp
-#        UI_USER/LoginUI.h
-#        UI_USER/CustomerMenu.cpp
-#        UI_USER/CustomerMenu.h
-#        UI_USER/EmployeeMenu.cpp
-#        UI_USER/EmployeeMenu.h
-#        Order/Order_repo.cpp
-#        Order/Order_repo.h)
-#=======
         Domain/Customer.cpp
         Repo/CustomerRepo.cpp
         Domain/Employee.cpp
@@ -40,7 +20,9 @@ add_library(app_lib
         Domain/Product.cpp
         Repo/ProductRepo.cpp
         Services/Validator.cpp
-        Services/Validator.cpp
+
+        Domain/Order.cpp
+        Repo/Order_repo.cpp
 
         UI/LoginUI.cpp
         UI/LoginUI.h
@@ -59,8 +41,8 @@ add_executable(run_tests tests_main.cpp
         Tests/UserTests.cpp
         Tests/ProductTests.cpp
         Tests/ClientTests.cpp
+        Tests/OrderTests.cpp
 )
 # Link the tests executable with the app_lib library
 target_link_libraries(run_tests app_lib)
-#>>>>>>> main
 

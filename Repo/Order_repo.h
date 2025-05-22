@@ -1,7 +1,7 @@
 #ifndef ORDER_REPOSITORY_H
 #define ORDER_REPOSITORY_H
 
-#include "../Order/Order.h"
+#include "../Domain/Order.h"
 #include <vector>
 #include <string>
 
@@ -23,17 +23,20 @@ public:
     bool updateProducts(const string& id, const string& employee, const vector<Product>& newProducts);
     bool takeOverOrder(const string& id, const string& employee);
 
-    Order* findOrderById(const string& id);
-    const Order* findOrderById(const string& id) const;
-
     vector<Order> getAllOrders() const;
     const vector<Order>& getOrders() const;
 
-    vector<Order> getOrdersForEmployee(const string& employee) const;
-    vector<Order> getOrdersForCustomer(const string& customer) const;
-    vector<Order> getOrdersByStatus(Status status) const;
-    double getTotalAmountByMonth(int month, int year) const;
-    double getTotalAmountByYear(int year) const;
+    Order* findOrderById(const string& id);
+    const Order* findOrderById(const string& id) const;
+
+    //
+    vector<Order> findOrdersByStatus(Status status) const;
+
+    vector<Order> findOrdersByEmployee(const string& employee) const;
+
+    vector<Order> findOrdersByCustomer(const string& customer) const;
+
+
 };
 
 #endif // ORDER_REPOSITORY_H

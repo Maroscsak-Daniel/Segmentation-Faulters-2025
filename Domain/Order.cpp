@@ -1,5 +1,6 @@
 #include "Order.h"
-#include <cstdlib>
+#include <random>
+#include <ctime>
 
 Order::Order(Date date, Status status, const vector<Product>& products,
              const string& customer, const string& employee)
@@ -15,18 +16,21 @@ Order::Order(Date date, Status status, const vector<Product>& products,
 
 string Order::generateId(int length) {
     const string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    random_device rd;
+    mt19937 generator(rd());
+    uniform_int_distribution<> dist(0, characters.size() - 1);
+
     string result;
-    for( int i = 0; i < length; i++){
-      int index = rand() % characters.size();
-      result += characters[index];
-      }
-      return result;
+    for (int i = 0; i < length; ++i) {
+        result += characters[dist(generator)];
+    }
+    return result;
 }
 
 double Order::calculateTotalAmount(const vector<Product>& products) {
     double sum = 0.0;
     for (const auto& product : products) {
-        sum += product.getPrice() * product.getQuantity();
+        sum += product.getPrice() * product.getStock();
     }
     return sum;
 }
@@ -53,10 +57,6 @@ const vector<Product>& Order::getProducts() const {
 
 double Order::getTotalAmount() const {
     return totalAmount;
-}
-
-Date Order::getDate() const {
-    return orderDate;
 }
 
 void Order::setStatus(Status s) {

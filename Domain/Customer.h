@@ -54,8 +54,6 @@ public:
 	void anonymize(int id); // sets fields as specified in K2
 
 	// Validations (K5)
-	bool isValidEmail() const;
-	bool isValidPhone() const;
 	bool isValid() const; // logic depending on gdprDeleted
 
 	// Utilities

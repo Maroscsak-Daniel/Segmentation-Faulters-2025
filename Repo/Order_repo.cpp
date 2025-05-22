@@ -8,13 +8,18 @@ void OrderRepository::createOrder(
     Status status
 ) {
     if (status != Status::Confirmed && status != Status::Reservation) return;
-
-    if (status == Status::Reservation && !employee.empty()) return;
-
     Order o(date, status, products, customer, employee);
     orders.push_back(o);
 }
 
+Order* OrderRepository::findOrderById(const string& id) {
+    for (auto& order : orders) {
+        if (order.getId() == id) {
+            return &order;
+        }
+    }
+    return nullptr;
+}
 
 const Order* OrderRepository::findOrderById(const string& id) const {
     for (const auto& order : orders) {
@@ -68,50 +73,36 @@ vector<Order> OrderRepository::getAllOrders() const {
     return orders;
 }
 
-
-vector<Order> OrderRepository::getOrdersForEmployee(const string& employee) const {
+const vector<Order>& OrderRepository::getOrders() const {
     return orders;
 }
 
-vector<Order> OrderRepository::getOrdersForCustomer(const string& customer) const {
+vector<Order> OrderRepository::findOrdersByCustomer(const string& customer) const {
     vector<Order> result;
     for (const auto& order : orders) {
-        if (order.getCustomer() == customer) {
+        if (order.getCustomer() == customer)
             result.push_back(order);
-        }
     }
     return result;
 }
 
-vector<Order> OrderRepository::getOrdersByStatus(Status status) const {
+vector<Order> OrderRepository::findOrdersByEmployee(const string& employee) const {
     vector<Order> result;
     for (const auto& order : orders) {
-        if (order.getStatus() == status) {
+        if (order.getEmployee() == employee)
             result.push_back(order);
-        }
     }
     return result;
 }
 
-double OrderRepository::getTotalAmountByMonth(int month, int year) const {
-    double sum = 0.0;
+vector<Order> OrderRepository::findOrdersByStatus(Status status) const {
+    vector<Order> result;
     for (const auto& order : orders) {
-        if (order.getStatus() != Status::Completed) continue;
-        Date d = order.getDate();
-        if (d.month == month && d.year == year) {
-            sum += order.getTotalAmount();
-        }
+        if (order.getStatus() == status)
+            result.push_back(order);
     }
-    return sum;
+    return result;
 }
 
-double OrderRepository::getTotalAmountByYear(int year) const {
-    double sum = 0.0;
-    for (const auto& order : orders) {
-        if (order.getStatus() != Status::Completed) continue;
-        if (order.getDate().year == year) {
-            sum += order.getTotalAmount();
-        }
-    }
-    return sum;
-}
+
+

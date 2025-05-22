@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Product.h"
+#include "../Domain/Product.h"
 
 using namespace std;
 
@@ -51,7 +51,6 @@ public:
     string getId() const;
     const vector<Product>& getProducts() const;
     double getTotalAmount() const;
-    Date getDate() const;
 
     void setStatus(Status s);
     void setEmployee(const string& e);
