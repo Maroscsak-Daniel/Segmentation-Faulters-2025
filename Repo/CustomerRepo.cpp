@@ -118,3 +118,19 @@ void CustomerRepo::deleteCustomer(const Customer& customer) {
         cout << "Customer not found for deletion." << endl;
     }
 }
+ const vector<Customer>& CustomerRepo::getAllCustomers(){
+    return customers;
+}
+
+
+vector<Customer> CustomerRepo::show_all_customers() const {
+    vector<Customer> customers = getAllCustomers();
+
+    sort(customers.begin(), customers.end(), [](const Customer& a, const Customer& b) {
+        if (a.getLastName() == b.getLastName())
+            return a.getFirstName() < b.getFirstName();
+        return a.getLastName() < b.getLastName();
+    });
+
+    return customers;
+}

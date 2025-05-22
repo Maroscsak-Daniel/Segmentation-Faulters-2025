@@ -21,7 +21,7 @@ public:
 	Customer findByEmail(const string& email) const;
 	Customer findByPhone(const string& phone) const;
 	vector<Customer> findByName(const string& lastName, const string& firstName) const;
-	const vector<Customer>& getAllCustomers() const;
+	static const vector<Customer>& getAllCustomers();
 	vector<Customer> getAllSorted() const;
 
 
@@ -29,6 +29,7 @@ public:
 	Customer findCustomer(const string& email);
 	void updateCustomer(const Customer& customer);
 	void deleteCustomer(const Customer& customer);
+	vector<Customer> show_all_customers() const;
 };
 
 #endif

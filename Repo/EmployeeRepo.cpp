@@ -83,16 +83,6 @@ vector<Employee> Employeerepo::findByBirthdateRange(const string& from, const st
     return result;
 }
 
-vector<Customer> Employeerepo::show_all_customers() const {
-    vector<Customer> customers = customerRepo.getAllCustomers();
 
-    sort(customers.begin(), customers.end(), [](const Customer& a, const Customer& b) {
-        if (a.getLastName() == b.getLastName())
-            return a.getFirstName() < b.getFirstName();
-        return a.getLastName() < b.getLastName();
-    });
-
-    return customers;
-}
 
 

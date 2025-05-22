@@ -11,7 +11,6 @@
 #define EMPLOYEE_REPOSITORY_H
 
 #include "../Domain/Employee.h"
-#include "../Domain/Customer.h"
 #include <vector>
 
 using namespace std;
@@ -31,7 +30,7 @@ public:
 	Employee findByShortCode(const string& shortCode) const;
 	vector<Employee> findByName(const string& lastName, const string& firstName) const;
 	vector<Employee> findByBirthdateRange(const string& from, const string& to) const;
-	vector<Customer> show_all_customers() const;
+
 };
 
 #endif
