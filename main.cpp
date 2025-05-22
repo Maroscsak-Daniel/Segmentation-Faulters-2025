@@ -3,21 +3,22 @@
 //
 #include <iostream>
 
-#include "Product/Product.h"
-#include "Product/ProductRepo.h"
-#include "Product/Validator.h"
-#include "Customer/Customer.h"
-#include "Employee/employee.h"
-#include "Employee/EmployeeRepo.h"
-#include "User/UserRepo.h"
-#include "User/UserServices.h"
-#include "UI_USER/CustomerMenu.h"
-#include "UI_USER/EmployeeMenu.h"
-#include "UI_USER/LoginUI.h"
+#include "Domain/Product.h"
+#include "Repo/ProductRepo.h"
+#include "Services/Validator.h"
+#include "Domain/Customer.h"
+#include "Domain/Employee.h"
+#include "Repo/EmployeeRepo.h"
+#include "Repo/UserRepo.h"
+#include "Services/UserServices.h"
+#include "UI/CustomerMenu.h"
+#include "UI/EmployeeMenu.h"
+#include "UI/LoginUI.h"
 
 
 using namespace std;
-void teste();
+using namespace Validate;
+
 int main() {
 	// cout << "End my suffering" << endl;
  //    return 0;
@@ -30,8 +31,8 @@ int main() {
 	double price = 1.5; //															| P1, P2, P3, P4 is done.
 	int stock = 10; //																| Product Class done.
 	//																				| Product Repo Class done.
-	if (Validator::validateId(id) && Validator::validateName(name) //				| Created a Validator class for P4.
-		&& Validator::validatePrice(price) && Validator::validateStock(stock)) { //	| You can now add Products to Repo.
+	if (validateID(id) && validateName(name) //					| Created a Validator class for P4.
+		&& validatePrice(price) && validateStock(stock)) { //	| You can now add Products to Repo.
 		Product p(id, name, price, stock); //									|
 		if (repo2.addProduct(p)) { //												| Feel free to delete or comment
 			cout << "Produkt hinzugefugt.\n"; //									| this part of the code, it's here
@@ -65,16 +66,6 @@ int main() {
 	// }
 	//
 	// cout << "=== TEST END ===" << endl;
-  
-  
-	int opt;
-	std::cout << "1. Ruleaza aplicatia\n2. Ruleaza teste\nAlege: ";
-	std::cin >> opt;
-
-	if (opt == 2) {
-		teste();
-		return 0;
-	}
 
 	UserRepo repos;
 	repos.addUser(User("admin@store.com", "parola123", "employee"));
