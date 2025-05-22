@@ -25,8 +25,10 @@ namespace Validate {
 	bool validateTotalAmount(double amount);
 	// will have to validate order date -> make it so it uses the YYYY-MM-DD string format
 
-	//Validator Customer
+	//Validator User(Customer, Employee)
 	bool isValidEmail(const string& email);
+	bool isValidPassword(const string& password);
+	bool isValidRole(const string& role);
 	bool isValidPhone(const string& phone);
 	bool isValidAddress(const string& address);
 	bool isNonEmpty(const string& field);

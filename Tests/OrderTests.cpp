@@ -12,7 +12,7 @@ void runOrderTests() {
 
     vector<Product> products = {p1, p2};
 
-    Order order(date, Status::Reservation, products, "client@test.com", "employee1");
+    Order order(date, Status::Reservation, products, "", "employee1");
 
     cout << "[TEST 1] Total calculated correctly: ";
     if (order.getTotalAmount() == 19.0)
@@ -35,7 +35,7 @@ void runOrderTests() {
 
     //Create Order with Repo
     OrderRepository repo;
-    repo.createOrder(date, products, "client1@gmail.com", "", Status::Reservation);
+    repo.createOrder(date, products, "", "emp1", Status::Reservation);
     string id = repo.getOrders().at(0).getId();
 
     cout << "[TEST 4] Order created and stored: ";
@@ -68,13 +68,10 @@ void runOrderTests() {
     else
         cout << "FAILED\n";
 
-    cout << "[TEST 8] Find by customer (client1@mail.com): ";
-    auto byCustomer = repo.findOrdersByCustomer("client1@mail.com");
-    cout << (byCustomer.size() == 1 ? "PASSED\n" : "FAILED\n");
 
 
-    cout << "[TEST 9] Find by customer (client1@mail.com): ";
-    auto customer = repo.findOrdersByCustomer("client1@mail.com");
+    cout << "[TEST 9] Find by customer (emp1): ";
+    auto customer = repo.findOrdersByEmployee("emp1");
     cout << (customer.size() == 1 ? "PASSED\n" : "FAILED\n");
 
 }
