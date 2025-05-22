@@ -68,9 +68,7 @@ void runOrderTests() {
     else
         cout << "FAILED\n";
 
-
-
-    cout << "[TEST 9] Find by customer (emp1): ";
+    cout << "[TEST 8] Find by customer (emp1): ";
     auto customer = repo.findOrdersByEmployee("emp1");
     cout << (customer.size() == 1 ? "PASSED\n" : "FAILED\n");
 
