@@ -79,7 +79,7 @@ void runProductTests() {
 	}
 
 	cout << "Testing date validity (format + logic)..." << endl;
-	Product validDateProd("Shoes", 89.99, 4, "2024-02-29"); // leap year
+	Product validDateProd("Shoes", 89.99, 4, "2026-02-28"); // leap year
 	Product invalidFormat("Cap", 15.99, 2, "20240529");      // bad format
 	Product invalidLogic("Sneakers", 79.99, 3, "2023-02-30");// invalid day
 
