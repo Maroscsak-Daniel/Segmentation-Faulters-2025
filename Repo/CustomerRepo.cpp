@@ -3,6 +3,7 @@
 //
 #include "../Repo/CustomerRepo.h"
 #include "../Domain/Customer.h"
+#include "Order_repo.h"
 #include <algorithm>
 #include <stdexcept>
 
@@ -58,6 +59,19 @@ vector<Customer> CustomerRepo::findByName(const string& lastName, const string& 
     }
     return result;
 }
+
+// Customer CustomerRepo::findByProduct(const string &product) const {
+//     vector<Customer> result;
+//     for (const auto& c : customers) {
+//         for (const auto& o : o.getAllOrders() )
+//             for (const string& p : p.getAllProducts) {
+//                 if (p.getProduct() == p)
+//                     result.push_back(o);
+//             }
+//     }
+//     return result;
+// }
+
 
 
 vector<Customer> CustomerRepo::getAllSorted() const {

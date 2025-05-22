@@ -23,6 +23,7 @@ public:
 	vector<Customer> findByName(const string& lastName, const string& firstName) const;
 	static const vector<Customer>& getAllCustomers();
 	vector<Customer> getAllSorted() const;
+	// Customer findByProduct(const string& product) const;
 
 
 	void addCustomer(const Customer& customer);
