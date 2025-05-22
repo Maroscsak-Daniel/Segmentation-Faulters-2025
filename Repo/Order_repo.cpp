@@ -76,3 +76,33 @@ vector<Order> OrderRepository::getAllOrders() const {
 const vector<Order>& OrderRepository::getOrders() const {
     return orders;
 }
+
+vector<Order> OrderRepository::findOrdersByCustomer(const string& customer) const {
+    vector<Order> result;
+    for (const auto& order : orders) {
+        if (order.getCustomer() == customer)
+            result.push_back(order);
+    }
+    return result;
+}
+
+vector<Order> OrderRepository::findOrdersByEmployee(const string& employee) const {
+    vector<Order> result;
+    for (const auto& order : orders) {
+        if (order.getEmployee() == employee)
+            result.push_back(order);
+    }
+    return result;
+}
+
+vector<Order> OrderRepository::findOrdersByStatus(Status status) const {
+    vector<Order> result;
+    for (const auto& order : orders) {
+        if (order.getStatus() == status)
+            result.push_back(order);
+    }
+    return result;
+}
+
+
+

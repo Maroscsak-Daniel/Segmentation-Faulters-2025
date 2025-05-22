@@ -20,7 +20,9 @@ add_library(app_lib
         Domain/Product.cpp
         Repo/ProductRepo.cpp
         Services/Validator.cpp
-        Services/Validator.cpp
+
+        Domain/Order.cpp
+        Repo/Order_repo.cpp
 
         UI/LoginUI.cpp
         UI/LoginUI.h
@@ -39,6 +41,7 @@ add_executable(run_tests tests_main.cpp
         Tests/UserTests.cpp
         Tests/ProductTests.cpp
         Tests/ClientTests.cpp
+        Tests/OrderTests.cpp
 )
 # Link the tests executable with the app_lib library
 target_link_libraries(run_tests app_lib)

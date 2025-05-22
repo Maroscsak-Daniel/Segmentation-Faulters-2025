@@ -24,6 +24,13 @@ namespace Validate {
 	bool validateProducts(Product product);
 	bool validateTotalAmount(double amount);
 	// will have to validate order date -> make it so it uses the YYYY-MM-DD string format
+
+	//Validator Customer
+	bool isValidEmail(const string& email);
+	bool isValidPhone(const string& phone);
+	bool isValidAddress(const string& address);
+	bool isNonEmpty(const string& field);
+
 }
 
 

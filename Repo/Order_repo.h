@@ -28,6 +28,15 @@ public:
 
     Order* findOrderById(const string& id);
     const Order* findOrderById(const string& id) const;
+
+    //
+    vector<Order> findOrdersByStatus(Status status) const;
+
+    vector<Order> findOrdersByEmployee(const string& employee) const;
+
+    vector<Order> findOrdersByCustomer(const string& customer) const;
+
+
 };
 
 #endif // ORDER_REPOSITORY_H

@@ -6,7 +6,10 @@ void runUserTests();
 
 void runProductTests();
 
+void runOrderTests();
+
 int main() {
 	runUserTests();
 	runProductTests();
+	runOrderTests();
 }
