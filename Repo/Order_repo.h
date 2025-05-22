@@ -12,7 +12,7 @@ private:
     vector<Order> orders;
 
 public:
-    void createOrder(const Date& date,
+    void createOrder(const string& date,
                      const vector<Product>& products,
                      const string& customer,
                      const string& employee,

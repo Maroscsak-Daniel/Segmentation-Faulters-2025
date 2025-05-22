@@ -6,7 +6,7 @@
 using namespace std;
 
 void runOrderTests() {
-    Date date{21, 5, 2025};
+    string date = "2025-05-21";
     Product p1("Milk", 5.0, 2, "2025-09-09");     // total = 10
     Product p2("Bread", 3.0, 3, "2024-08-08");    // total = 9
 

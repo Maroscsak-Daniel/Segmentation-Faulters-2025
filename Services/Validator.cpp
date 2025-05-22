@@ -1,5 +1,6 @@
 #include "Validator.h"
 #include <cctype>
+#include <ctime>
 
 namespace Validate {
 
@@ -45,7 +46,27 @@ namespace Validate {
 		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 			daysInMonth[1] = 29;
 
-		return day <= daysInMonth[month - 1];
+		if (day > daysInMonth[month - 1])
+			return false;
+
+		time_t t = time(0);
+		tm* today = localtime(&t);
+
+		int currentYear = today->tm_year + 1900;
+		int currentMonth = today->tm_mon + 1;
+		int currentDay = today->tm_mday;
+
+		if (year < currentYear)
+			return false;
+		if (year == currentYear) {
+			if (month < currentMonth)
+				return false;
+			if (month == currentMonth)
+				if (day < currentDay)
+					return false;
+		}
+
+		return true;
 	}
 
 	bool validateStatus(Status status) {

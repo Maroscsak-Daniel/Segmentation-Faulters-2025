@@ -7,6 +7,7 @@
 
 
 #include <iostream>
+
 using namespace std;
 
 
@@ -18,10 +19,10 @@ private:
 	string name;
 	double price;
 	int stock;
-	string date;
+	string expDate;
 
 public:
-	Product(const string& name, double price, int stock, const string& date);
+	Product(const string& name, double price, int stock, const string& expDate);
 
 	string getId() const;
 	string getName() const;
@@ -34,14 +35,6 @@ public:
 	void setStock(int newStock);
 	void setDate(const string& newDate);
 
-	bool isValidProductID() const;
-	bool isValidStock() const;
-	bool isValidPrice() const;
-	bool isValidDate() const;
-
-private:
-	bool isValidDateFormat(const string& d) const;
-	bool isLogicalDate(const string& d) const;
 };
 
 
