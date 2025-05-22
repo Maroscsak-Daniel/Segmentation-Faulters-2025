@@ -162,4 +162,13 @@ namespace Validate {
 		return !field.empty();
 	}
 
+	bool isValidSalary(const double& salary){
+		return salary >= 100;
+	}
+
+	// Validation: age between 0 and 80
+	bool isValidAge(const int& age){
+		return age >= 0 && age <= 80;
+	}
+
 }

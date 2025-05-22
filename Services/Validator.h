@@ -33,6 +33,11 @@ namespace Validate {
 	bool isValidAddress(const string& address);
 	bool isNonEmpty(const string& field);
 
+	//Validation Employee
+	bool isValidSalary(const double& salary);
+	bool isValidAge(const int& age);
+
+
 }
 
 
