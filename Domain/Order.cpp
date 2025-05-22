@@ -2,7 +2,7 @@
 #include <random>
 #include <ctime>
 
-Order::Order(Date date, Status status, const vector<Product>& products,
+Order::Order(const string &date, Status status, const vector<Product>& products,
              const string& customer, const string& employee)
     : orderDate(date),
       status(status),

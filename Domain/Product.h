@@ -7,6 +7,7 @@
 
 
 #include <iostream>
+
 using namespace std;
 
 
@@ -18,10 +19,10 @@ private:
 	string name;
 	double price;
 	int stock;
-	string date;
+	string expDate;
 
 public:
-	Product(const string& name, double price, int stock, const string& date);
+	Product(const string& name, double price, int stock, const string& expDate);
 
 	string getId() const;
 	string getName() const;

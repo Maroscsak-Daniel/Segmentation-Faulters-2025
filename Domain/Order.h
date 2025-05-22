@@ -8,12 +8,6 @@
 
 using namespace std;
 
-struct Date {
-    int day;
-    int month;
-    int year;
-};
-
 enum class Status { Reservation, Confirmed, Completed };
 
 struct OrderedProduct {
@@ -32,7 +26,7 @@ class Order {
 private:
     string id;
     Status status;
-    Date orderDate;
+    string orderDate;
     vector<Product> products;
     string customer;
     string employee;
@@ -42,7 +36,7 @@ private:
     double calculateTotalAmount(const vector<Product>& products);
 
 public:
-    Order(Date date, Status status, const vector<Product>& products,
+    Order(const string &date, Status status, const vector<Product>& products,
           const string& customer, const string& employee);
 
     Status getStatus() const;

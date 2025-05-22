@@ -1,7 +1,7 @@
 #include "Order_repo.h"
 
 void OrderRepository::createOrder(
-    const Date& date,
+    const string& date,
     const vector<Product>& products,
     const string& customer,
     const string& employee,
