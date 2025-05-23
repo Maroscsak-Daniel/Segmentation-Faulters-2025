@@ -3,9 +3,11 @@
 //
 #include "../Repo/CustomerRepo.h"
 #include "../Domain/Customer.h"
+#include "../Domain/Order.h"
 #include "Order_repo.h"
 #include <algorithm>
 #include <stdexcept>
+#include <sstream>
 
 using namespace std;
 
@@ -60,17 +62,68 @@ vector<Customer> CustomerRepo::findByName(const string& lastName, const string& 
     return result;
 }
 
-// Customer CustomerRepo::findByProduct(const string &product) const {
-//     vector<Customer> result;
-//     for (const auto& c : customers) {
-//         for (const auto& o : o.getAllOrders() )
-//             for (const string& p : p.getAllProducts) {
-//                 if (p.getProduct() == p)
-//                     result.push_back(o);
-//             }
-//     }
-//     return result;
-// }
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+Date parseDate(const string& date_input) {
+    return{
+        stoi(date_input.substr(0,4)),
+        stoi(date_input.substr(5,2)),
+        stoi(date_input.substr(7,2))
+    };
+}
+
+bool comparDates(const Date& d1, const Date& d2) {
+    if (d1.year != d2.year) return d1.year > d2.year;
+    if (d1.month!= d2.month) return d1.month > d2.month;
+    return d1.day > d2.day;
+}
+
+struct CustomerOrderInfo {
+    Customer customer;
+    Date mostRecentOrder;
+};
+
+vector <Customer> CustomerRepo::findByProduct(const string& productName, const OrderRepository& orderRepo) const {
+
+    vector <CustomerOrderInfo> result;
+    for (const auto& customer  : customers) {
+        Date lastDate{0,0,0};
+        bool found = false;
+
+        for (const auto& order : orderRepo.getAllOrders()) {
+            if (order.getCustomer() != customer.getEmail())
+                continue;
+
+            for (const auto& product : order.getProducts()) {
+                if (product.getName() == productName) {
+                    Date orderDate = parseDate(order.getorderDate());
+                    if (! found || comparDates(orderDate, lastDate)) {
+                        lastDate = orderDate;
+                        found = true;
+                    }
+                    break;
+                }
+            }
+        }
+        if (found == true) {
+            result.push_back({customer, lastDate});
+        }
+    }
+
+   sort(result.begin(), result.end(), [](const CustomerOrderInfo a, const CustomerOrderInfo b) {
+       return comparDates(a.mostRecentOrder, b.mostRecentOrder);
+   });
+
+    vector<Customer> SortedCustomers;
+    for (const auto& cust : result) {
+        SortedCustomers.push_back(cust.customer);
+    }
+    return SortedCustomers;
+}
 
 
 
@@ -84,7 +137,7 @@ vector<Customer> CustomerRepo::getAllSorted() const {
     return sorted;
 }
 
-//CRUD
+
 
 void CustomerRepo::addCustomer(const Customer& customer) {
     for (const auto& c: customers) {

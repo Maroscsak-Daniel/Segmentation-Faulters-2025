@@ -5,6 +5,8 @@
 #define CUSTOMER_REPO_H
 
 #include "../Domain/Customer.h"
+#include "../Repo/Order_repo.h"
+#include "../Domain/Order.h"
 #include <vector>
 
 using namespace std;
@@ -23,7 +25,7 @@ public:
 	vector<Customer> findByName(const string& lastName, const string& firstName) const;
 	static const vector<Customer>& getAllCustomers();
 	vector<Customer> getAllSorted() const;
-	// Customer findByProduct(const string& product) const;
+	vector<Customer> findByProduct(const string& product, const OrderRepository& orderRepo) const;
 
 
 	void addCustomer(const Customer& customer);
