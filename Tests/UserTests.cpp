@@ -2,6 +2,9 @@
 #include "../Domain/User.h"
 #include "../Repo/UserRepo.h"
 #include "../Services/UserServices.h"
+#include "../Domain/Employee.h"
+#include"../Domain/Customer.h"
+using namespace std;
 
 void runUserTests() {
     UserRepo repo;
@@ -123,4 +126,18 @@ void runUserTests() {
         std::cout << "PASSED\n";
     else
         std::cout << "FAILED\n";
+
+    cout<<"[ Test 17 ] Employee validator test:";
+    Employee employee("Jack","McDonald", "jack@gmail.com", "password123", "manager", "07.07.2000", "123", 300, "noRemarks");
+    if (employee.is_employee_valid())
+        cout<<"PASSED\n";
+    else
+        cout<<"FAILED\n";
+
+    cout<<"Customer validation test:";
+    Customer customer("Jack", "McDonald", "jack@gmail.com", "paswordd1234", "+40711223344", "St Moritz", "noRemarks", false);
+    if (! customer.isValid())
+        cout<<"FAILED\n";
+    else
+        cout<<"PASSED\n";
 }
