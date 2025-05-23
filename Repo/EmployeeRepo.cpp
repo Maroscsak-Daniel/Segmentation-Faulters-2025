@@ -81,13 +81,6 @@ vector<Employee> Employeerepo::findByBirthdateRange(const string& from, const st
     return result;
 }
 
-// Listează toți angajații, ordonați alfabetic după nume și prenume
-vector<Employee> Employeerepo::getAllSorted() const {
-    vector<Employee> sorted = employees;
-    sort(sorted.begin(), sorted.end(), [](const Employee& a, const Employee& b) {
-        if (a.getLastName() == b.getLastName())
-            return a.getFirstName() < b.getFirstName();
-        return a.getLastName() < b.getLastName();
-    });
-    return sorted;
-}
+
+
+
