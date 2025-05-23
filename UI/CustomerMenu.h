@@ -11,9 +11,9 @@ private:
 public:
     explicit CustomerMenu(UserRepo& repo);
 
-    CustomerMenu(CustomerRepo customer_repo, const ProductRepo & product_repo);
+    CustomerMenu(CustomerRepo customer_repo, ProductRepo & product_repo, OrderRepository & order_repo);
 
-    static void show();
+    void show();
 };
 
 #endif // CUSTOMERMENU_H

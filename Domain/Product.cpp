@@ -24,3 +24,8 @@ void Product::setName(const string& newName) { name = newName; }
 void Product::setPrice(double newPrice) { price = newPrice; }
 void Product::setStock(int newStock) { stock = newStock; }
 void Product::setDate(const string& newDate) { date = newDate; }
+
+string Product::toString() const {
+	return "ID: " + id + " | Name: " + name + " | Price: " + to_string(price) +
+		   " | Stock: " + to_string(stock) + " | Date: " + date;
+}

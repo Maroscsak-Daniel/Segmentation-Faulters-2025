@@ -33,7 +33,7 @@ public:
 	void setPrice(double newPrice);
 	void setStock(int newStock);
 	void setDate(const string& newDate);
-
+	string toString() const;
 };
 
 

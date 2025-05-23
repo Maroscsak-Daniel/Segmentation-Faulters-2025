@@ -11,15 +11,14 @@
 
 using namespace std;
 
-// ✅ Constructor corect cu referințe la toate repo-urile
-LoginUI::LoginUI(UserRepo& ur, CustomerRepo& cr, ProductRepo& pr)
-        : userRepo(ur), customerRepo(cr), productRepo(pr) {}
+LoginUI::LoginUI(UserRepo &ur, CustomerRepo &cr, ProductRepo &pr, EmployeeRepo &em, OrderRepository &orr)
+        : userRepo(ur), customerRepo(cr), productRepo(pr), employeeRepo(em), orderRepo(orr) {}
 
 void printLine() {
     cout << "=========================================\n";
 }
 
-void LoginUI::displayInitialMenu() {
+void LoginUI::displayInitialMenu() const {
     int choice = -1;
     while (choice != 0) {
         printLine();
@@ -53,7 +52,7 @@ void LoginUI::displayInitialMenu() {
     }
 }
 
-bool LoginUI::displayLoginMenu() {
+bool LoginUI::displayLoginMenu() const {
     int attempts = 3;
     while (attempts > 0) {
         printLine();
@@ -67,7 +66,7 @@ bool LoginUI::displayLoginMenu() {
         cin >> password;
 
         if (AuthService::login(userRepo, email, password)) {
-            User* user = userRepo.findUserByEmail(email);
+            const User* user = userRepo.findUserByEmail(email);
             if (!user) {
                 cout << "Unexpected error: User not found after login.\n";
                 return false;
@@ -87,7 +86,7 @@ bool LoginUI::displayLoginMenu() {
     return false;
 }
 
-void LoginUI::displayRegisterMenu() {
+void LoginUI::displayRegisterMenu() const {
     printLine();
     cout << setw(32) << right << "REGISTER NEW USER\n";
     printLine();
@@ -101,7 +100,7 @@ void LoginUI::displayRegisterMenu() {
         cin >> email;
     }
 
-    cout << "Enter password (min 4 chars, 1 uppercase, 1 digit): ";
+    cout << "Enter password (minimim 4 characters, 1 uppercase, 1 digit): ";
     cin >> password;
     while (!AuthService::isValidPassword(password)) {
         cout << "Password too weak. Try again: ";
@@ -116,28 +115,60 @@ void LoginUI::displayRegisterMenu() {
     }
 
     AuthService auth;
-    bool result = auth.registerUser(userRepo, email, password, role);
-    if (result) {
-        cout << "Registration successful! You can now login.\n\n";
-    } else {
+    const bool result = auth.registerUser(userRepo, email, password, role);
+    if (!result) {
         cout << "Registration failed: " << auth.getLastError() << "\n\n";
+        return;
+    }
+
+    if (role == "employee") {
+        string firstName, lastName, position, birthdate, shortCode, remarks;
+        double salary;
+
+        cout << "First Name: "; cin >> firstName;
+        cout << "Last Name: "; cin >> lastName;
+        cout << "Position: "; cin >> position;
+        cout << "Birthdate (dd.mm.yyyy): "; cin >> birthdate;
+        cout << "Short Code: "; cin >> shortCode;
+        cout << "Salary: "; cin >> salary;
+        cout << "Remarks: "; cin.ignore(); getline(cin, remarks);
+
+        Employee emp(firstName, lastName, email, password, position, birthdate, shortCode, salary, remarks);
+        if (!emp.isValidSalary() || !emp.isValidAge()) {
+            cout << "Invalid employee data.\n";
+        } else {
+            employeeRepo.addEmployee(emp);
+            cout << "Employee registered successfully!\n";
+        }
+
+    } else if (role == "customer") {
+        string firstName, lastName, phoneNumber, remarks,address ;
+        bool gdpr;
+
+        cout << "First Name: "; cin >> firstName;
+        cout << "Last Name: "; cin >> lastName;
+        cout << "Phone Number: "; cin >> phoneNumber;
+        cout << "Address: "; cin >> address;
+        cout << "Remarks: "; cin >> remarks;
+
+        Customer customer(firstName, lastName, email, password, phoneNumber, address, remarks, gdpr);
+        customerRepo.addCustomer(customer);
+        cout << "Customer registered successfully!\n";
     }
 }
 
-// ✅ Trimite și customerRepo, și productRepo la meniul angajatului
-void LoginUI::showEmployeeMenu() {
-    EmployeeMenu menu(customerRepo, productRepo);
+
+void LoginUI::showEmployeeMenu() const {
+    const EmployeeMenu menu(customerRepo, productRepo, employeeRepo, orderRepo);
     menu.show();
 }
 
-// ✅ Trimite și customerRepo, și productRepo la meniul clientului
-void LoginUI::showCustomerMenu() {
-    CustomerMenu menu(customerRepo, productRepo);
+void LoginUI::showCustomerMenu() const {
+    CustomerMenu menu(customerRepo, productRepo,orderRepo);
     menu.show();
 }
 
-// Redirecționează utilizatorul la meniul potrivit
-void LoginUI::showMenuBasedOnRole(const std::string& role) {
+void LoginUI::showMenuBasedOnRole(const std::string& role) const {
     if (role == "employee") {
         showEmployeeMenu();
     } else if (role == "customer") {

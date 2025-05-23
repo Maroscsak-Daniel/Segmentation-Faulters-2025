@@ -3,19 +3,18 @@
 #define EMPLOYEEMENU_H
 
 #include "LoginUI.h"
-#include "../Repo/UserRepo.h"
 #include "../Repo/CustomerRepo.h"
 #include "../Repo/EmployeeRepo.h"
 
 class EmployeeMenu {
 private:
-    UserRepo& userRepo;
+    CustomerRepo& customer_repo;
+    ProductRepo& product_repo;
+    EmployeeRepo& employeeRepo;
+    OrderRepository& order_repo;
 public:
-    EmployeeMenu(UserRepo& repo) : userRepo(repo) {}
-
-    EmployeeMenu(CustomerRepo customer_repo, const ProductRepo & product_repo);
-
-    void show();
+    EmployeeMenu(CustomerRepo& customer_repo, ProductRepo& product_repo, EmployeeRepo& employeeRepo, OrderRepository& order_repo);
+    void show() const;
 };
 
 #endif

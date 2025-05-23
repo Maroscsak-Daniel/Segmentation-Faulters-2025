@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool Employeerepo::emailExists(const string& email) const {
+bool EmployeeRepo::emailExists(const string& email) const {
       for( auto& e:employees){
         if(e.getEmail()==email)
               return true;
@@ -15,7 +15,7 @@ bool Employeerepo::emailExists(const string& email) const {
       return false;
 };
 
-bool Employeerepo::codeExists(const string& shortCode) const {
+bool EmployeeRepo::codeExists(const string& shortCode) const {
     for( auto& e:employees){
         if(e.getShortCode()==shortCode)
             return true;
@@ -24,7 +24,7 @@ bool Employeerepo::codeExists(const string& shortCode) const {
     return false;
 };
 
-void Employeerepo::addEmployee(const Employee& e){
+void EmployeeRepo::addEmployee(const Employee& e){
     if (emailExists(e.getEmail()))
         throw runtime_error("Email already exists.");
     if (codeExists(e.getShortCode()))
@@ -37,7 +37,7 @@ void Employeerepo::addEmployee(const Employee& e){
     employees.push_back(e);
 };
 
-void Employeerepo::updateEmployee(const string& email, const Employee& updated) {
+void EmployeeRepo::updateEmployee(const string& email, const Employee& updated) {
     for (auto& e : employees) {
         if (e.getEmail() == email) {
             e = updated;
@@ -47,21 +47,21 @@ void Employeerepo::updateEmployee(const string& email, const Employee& updated) 
     throw runtime_error("Employee not found.");
 }
 
-Employee Employeerepo::findByEmail(const string& email) const {
+Employee EmployeeRepo::findByEmail(const string& email) const {
     for(auto& e:employees){
         if(e.getEmail()==email)
             return e;
     }
 }
 
-Employee Employeerepo::findByShortCode(const string& ShortCode) const{
+Employee EmployeeRepo::findByShortCode(const string& ShortCode) const{
     for(auto& e:employees){
         if(e.getShortCode()==ShortCode)
             return e;
     }
 }
 
-vector<Employee> Employeerepo::findByName(const string& lastName, const string& firstName) const{
+vector<Employee> EmployeeRepo::findByName(const string& lastName, const string& firstName) const{
   vector<Employee> result;
   for(auto& e:employees){
     if(e.getLastName()==lastName && e.getFirstName()==firstName){
@@ -71,7 +71,7 @@ vector<Employee> Employeerepo::findByName(const string& lastName, const string& 
      return result;
 }
 
-vector<Employee> Employeerepo::findByBirthdateRange(const string& from, const string& to) const {
+vector<Employee> EmployeeRepo::findByBirthdateRange(const string& from, const string& to) const {
     vector<Employee> result;
     for (const auto& e : employees) {
         if (e.getBirthDate() >= from && e.getBirthDate() <= to)
@@ -81,7 +81,7 @@ vector<Employee> Employeerepo::findByBirthdateRange(const string& from, const st
 }
 
 // Listează toți angajații, ordonați alfabetic după nume și prenume
-vector<Employee> Employeerepo::getAllSorted() const {
+vector<Employee> EmployeeRepo::getAllSorted() const {
     vector<Employee> sorted = employees;
     sort(sorted.begin(), sorted.end(), [](const Employee& a, const Employee& b) {
         if (a.getLastName() == b.getLastName())
