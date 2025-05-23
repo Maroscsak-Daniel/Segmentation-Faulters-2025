@@ -67,7 +67,7 @@ void CustomerMenu::show() {
             }
 
             if (!cart.empty()) {
-                Date date;
+                string date;
                 Status status = Status::Confirmed;
                 string employee;
 
@@ -80,7 +80,7 @@ void CustomerMenu::show() {
         else if (option == 5) {
             vector<Order> orders = order_repo.findOrdersByCustomer(customerName);
             for (const auto& order : orders) {
-                cout << "Order ID: " << order.getId() << ", Status: " << (int)order.getStatus()
+                cout << "Order ID: " << order.getId() << ", Status: " << statusToString(order.getStatus())
                      << ", Total: " << order.getTotalAmount() << "\n";
             }
         }
@@ -90,7 +90,7 @@ void CustomerMenu::show() {
             getline(cin, orderId);
             const Order* order = order_repo.findOrderById(orderId);
             if (order && order->getCustomer() == customerName) {
-                cout << "Status of order " << orderId << ": " << (int)order->getStatus() << "\n";
+                cout << "Status of order " << orderId << ": " << statusToString(order->getStatus()) << "\n";
             } else {
                 cout << "Order not found.\n";
             }
@@ -98,7 +98,7 @@ void CustomerMenu::show() {
         else if (option == 7) {
             string customer;
             cout << "Enter your name: ";
-            getline(cin, customerName);
+            getline(cin, customer);
 
             auto orders = order_repo.findOrdersByCustomer(customer);
             if (orders.empty()) {
@@ -106,16 +106,12 @@ void CustomerMenu::show() {
             } else {
                 for (const auto& order : orders) {
                     cout << "Order ID: " << order.getId() << "\n";
-                    cout << "Status: ";
-                    switch (order.getStatus()) {
-                        case Status::Confirmed: cout << "Confirmed."; break;
-                        case Status::Reservation: cout << "Order reserved."; break;
-                        case Status::Completed: cout << "Completed."; break;
-                    }
-                    cout << "\nTotal: " << order.getTotalAmount() << "\n\n";
+                    cout << "Status: " << statusToString(order.getStatus()) << "\n";
+                    cout << "Total: " << order.getTotalAmount() << "\n\n";
                 }
             }
         }
+
 
         else if (option != 0) {
             cout << "Invalid option. Try again.\n";

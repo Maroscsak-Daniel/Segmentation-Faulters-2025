@@ -50,5 +50,6 @@ public:
     void setEmployee(const string& e);
     void setProducts(const vector<Product>& newProducts);
 };
+    std::string statusToString(Status status);
 
 #endif // ORDER_H

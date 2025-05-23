@@ -1,6 +1,5 @@
 
 #include "EmployeeMenu.h"
-#include "../Domain/Employee.h"
 #include <iostream>
 
 using namespace std;
@@ -128,7 +127,7 @@ void EmployeeMenu::show() const {
                 cout << "Product does not exist.\n";
             }
         }
-                else if (option == 9) {
+        else if (option == 9) {
             string id, employee;
             cout << "Enter order ID to confirm: ";
             getline(cin, id);
