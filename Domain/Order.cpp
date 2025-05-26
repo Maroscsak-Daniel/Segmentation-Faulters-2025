@@ -81,4 +81,16 @@ void Order::setProducts(const vector<Product>& newProducts) {
     totalAmount = calculateTotalAmount(newProducts);
 }
 
+std::string statusToString(Status status) {
+    if (status == Status::Reservation) {
+        return "Reservation";
+    }
+    if (status == Status::Confirmed) {
+        return "Confirmed";
+    }
+    if (status == Status::Completed) {
+        return "Completed";
+    }
+    return "Unknown";
+}
 

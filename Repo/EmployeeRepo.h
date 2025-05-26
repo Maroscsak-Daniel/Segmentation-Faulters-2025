@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Employeerepo {
+class EmployeeRepo {
 private:
 	vector<Employee> employees;
 

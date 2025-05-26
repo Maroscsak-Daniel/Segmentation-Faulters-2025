@@ -52,5 +52,6 @@ public:
     void setorderdata(const string& ymd);
     void setProducts(const vector<Product>& newProducts);
 };
+    std::string statusToString(Status status);
 
 #endif // ORDER_H
