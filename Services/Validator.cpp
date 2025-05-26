@@ -119,6 +119,25 @@ namespace Validate {
 		return dot != -1 && dot < email.size() - 1;
 	}
 
+	bool isValidPassword(const string& password) {
+		if (password.length() < 4) return false;
+
+		bool hasDigit = false;
+		bool hasUpper = false;
+
+		for (const char ch : password) {
+			if (std::isdigit(ch)) hasDigit = true;
+			if (std::isupper(ch)) hasUpper = true;
+		}
+
+		return hasDigit && hasUpper;
+	}
+
+	bool isValidRole(const std::string& role) {
+		return role == "employee" ||
+			   role == "customer";
+	}
+
 	bool isValidPhone(const string& phone) {
 		// only numbers allowed, "+" is optional
 		if (phone.empty()) return false;
@@ -137,8 +156,19 @@ namespace Validate {
 		return !address.empty();
 	}
 
+
+
 	bool isNonEmpty(const string& field) {
 		return !field.empty();
+	}
+
+	bool isValidSalary(const double& salary){
+		return salary >= 100;
+	}
+
+	// Validation: age between 0 and 80
+	bool isValidAge(const int& age){
+		return age >= 0 && age <= 80;
 	}
 
 }

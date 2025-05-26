@@ -3,6 +3,7 @@
 #include<sstream>
 #include<iostream>
 #include <algorithm>
+#include "../Services/Validator.h"
 
 using namespace std;
 
@@ -29,9 +30,9 @@ void EmployeeRepo::addEmployee(const Employee& e){
         throw runtime_error("Email already exists.");
     if (codeExists(e.getShortCode()))
         throw runtime_error("Short code already exists.");
-    if (!e.isValidSalary())
+    if (! Validate::isValidSalary(e.getSalary()))
         throw runtime_error("Salary must be at least 100.");
-    if (!e.isValidAge())
+    if (! Validate::isValidAge(e.getAge()))
         throw runtime_error("Age must be between 0 and 80.");
 
     employees.push_back(e);
@@ -80,7 +81,7 @@ vector<Employee> EmployeeRepo::findByBirthdateRange(const string& from, const st
     return result;
 }
 
-// Listează toți angajații, ordonați alfabetic după nume și prenume
+
 vector<Employee> EmployeeRepo::getAllSorted() const {
     vector<Employee> sorted = employees;
     sort(sorted.begin(), sorted.end(), [](const Employee& a, const Employee& b) {
@@ -90,3 +91,4 @@ vector<Employee> EmployeeRepo::getAllSorted() const {
     });
     return sorted;
 }
+

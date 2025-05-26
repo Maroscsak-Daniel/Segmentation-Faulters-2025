@@ -43,11 +43,13 @@ public:
     string getEmployee() const;
     string getCustomer() const;
     string getId() const;
+    string getorderDate() const;
     const vector<Product>& getProducts() const;
     double getTotalAmount() const;
 
     void setStatus(Status s);
     void setEmployee(const string& e);
+    void setorderdata(const string& ymd);
     void setProducts(const vector<Product>& newProducts);
 };
     std::string statusToString(Status status);

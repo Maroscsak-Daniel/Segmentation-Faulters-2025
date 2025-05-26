@@ -1,6 +1,6 @@
 #pragma once
 #include "../Repo/UserRepo.h"
-
+using namespace std;
 class AuthService {
 private:
     std::string lastError;
@@ -12,11 +12,7 @@ public:
     bool registerUser(UserRepo& userRepo, const std::string& email, const std::string& password, const std::string& role);
     //unicitate email in conectare
 
-    static bool isValidPassword(const std::string& password);
-    //validare structura parola, lungime 4 + o majuscula(macar) + o cifra(macar)
-
-    static bool isValidEmail(const std::string& email);
-    static bool isValidRole(const std::string& role);
+    bool is_user_valid(const string& email, const string& password, const string& role);
 
     const std::string& getLastError() const;  // getter pentru mesajul de eroare
 

@@ -5,6 +5,8 @@
 #include "Employee.h"
 #include <sstream>
 #include <ctime>
+#include "../Services/Validator.h"
+
 //din email("") am schimbat in email(email);
 Employee::Employee()
     : User("", "", "employee"),
@@ -49,15 +51,23 @@ void Employee::setSalary(double s) { salary = s; }
 void Employee::setRemarks(const string& rm) { remarks = rm; }
 
 // Validation: salary ≥ 100
-bool Employee::isValidSalary() const {
-    return salary >= 100;
+
+
+
+bool Employee::is_employee_valid() const {
+    int age = getAge();
+    if (! Validate::isValidAge(age))
+        return false;
+
+    double salary = getSalary();
+    if (! Validate::isValidSalary(salary))
+        return false;
+
+    return true;
 }
 
-// Validation: age between 0 and 80
-bool Employee::isValidAge() const {
-    int age = getAge();
-    return age >= 0 && age <= 80;
-}
+
+
 
 // Calculate age based on birthDate (format: dd.mm.yyyy)
 int Employee::getAge() const {

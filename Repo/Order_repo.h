@@ -29,7 +29,7 @@ public:
     Order* findOrderById(const string& id);
     const Order* findOrderById(const string& id) const;
 
-    //
+
     vector<Order> findOrdersByStatus(Status status) const;
 
     vector<Order> findOrdersByEmployee(const string& employee) const;

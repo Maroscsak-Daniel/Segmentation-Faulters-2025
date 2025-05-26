@@ -51,6 +51,15 @@ string Order::getId() const {
     return id;
 }
 
+string Order::getorderDate() const {
+    return orderDate;
+}
+
+
+void Order::setorderdata(const string& ymd) {
+    orderDate = ymd;
+}
+
 const vector<Product>& Order::getProducts() const {
     return products;
 }
@@ -71,6 +80,7 @@ void Order::setProducts(const vector<Product>& newProducts) {
     products = newProducts;
     totalAmount = calculateTotalAmount(newProducts);
 }
+
 std::string statusToString(Status status) {
     if (status == Status::Reservation) {
         return "Reservation";

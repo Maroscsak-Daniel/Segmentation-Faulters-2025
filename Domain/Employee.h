@@ -57,8 +57,7 @@ public:
 	void setRemarks(const string& remarks);
 
 	// Validation
-	bool isValidAge() const;      // age between 0 and 80
-	bool isValidSalary() const;   // salary ≥ 100
+	bool is_employee_valid() const;
 	int getAge() const;           // calculated from birthDate
 
 	// Utility

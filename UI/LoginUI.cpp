@@ -4,6 +4,7 @@
 
 #include "EmployeeMenu.h"
 #include "CustomerMenu.h"
+#include "../Services/Validator.h"
 
 #include <iostream>
 #include <iomanip>
@@ -95,26 +96,27 @@ void LoginUI::displayRegisterMenu() const {
 
     cout << "Enter email: ";
     cin >> email;
-    while (!AuthService::isValidEmail(email)) {
+    while (!Validate::isValidEmail(email)) {
         cout << "Invalid email format. Try again: ";
         cin >> email;
     }
 
     cout << "Enter password (minimim 4 characters, 1 uppercase, 1 digit): ";
     cin >> password;
-    while (!AuthService::isValidPassword(password)) {
+    while (!Validate::isValidPassword(password)) {
         cout << "Password too weak. Try again: ";
         cin >> password;
     }
 
     cout << "Enter role (employee/customer): ";
     cin >> role;
-    while (!AuthService::isValidRole(role)) {
+    while (!Validate::isValidRole(role)) {
         cout << "Invalid role. Please enter 'employee' or 'customer': ";
         cin >> role;
     }
 
     AuthService auth;
+
     const bool result = auth.registerUser(userRepo, email, password, role);
     if (!result) {
         cout << "Registration failed: " << auth.getLastError() << "\n\n";
