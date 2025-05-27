@@ -11,6 +11,7 @@
 #include <limits>
 
 using namespace std;
+using namespace Validate;
 
 LoginUI::LoginUI(UserRepo &ur, CustomerRepo &cr, ProductRepo &pr, EmployeeRepo &em, OrderRepository &orr)
         : userRepo(ur), customerRepo(cr), productRepo(pr), employeeRepo(em), orderRepo(orr) {}
@@ -136,7 +137,7 @@ void LoginUI::displayRegisterMenu() const {
         cout << "Remarks: "; cin.ignore(); getline(cin, remarks);
 
         Employee emp(firstName, lastName, email, password, position, birthdate, shortCode, salary, remarks);
-        if (!emp.isValidSalary() || !emp.isValidAge()) {
+        if (!isValidSalary(salary)) {
             cout << "Invalid employee data.\n";
         } else {
             employeeRepo.addEmployee(emp);

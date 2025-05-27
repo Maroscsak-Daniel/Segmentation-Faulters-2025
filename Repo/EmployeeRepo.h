@@ -26,6 +26,7 @@ public:
 	Employee findByShortCode(const string& shortCode) const;
 	vector<Employee> findByName(const string& lastName, const string& firstName) const;
 	vector<Employee> findByBirthdateRange(const string& from, const string& to) const;
+	vector<Employee> getAllSorted() const;
 
 };
 

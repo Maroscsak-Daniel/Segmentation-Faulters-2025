@@ -6,6 +6,9 @@
 #include "../Domain/Product.h"
 #include <algorithm>
 
+#include "../Services/Validator.h"
+using namespace Validate;
+
 bool ProductRepo::productExists(const string& id) const {
 	for (const auto& p : products) {
 		if (p.getId() == id) return true;

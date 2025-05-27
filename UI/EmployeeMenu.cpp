@@ -1,8 +1,10 @@
 
 #include "EmployeeMenu.h"
 #include <iostream>
+#include "../Services/Validator.h"
 
 using namespace std;
+using namespace Validate;
 
 EmployeeMenu::EmployeeMenu(CustomerRepo& customer_repo, ProductRepo& product_repo, EmployeeRepo& employeeRepo, OrderRepository& order_repo)
     : customer_repo(customer_repo), product_repo(product_repo), employeeRepo(employeeRepo), order_repo(order_repo) {}
@@ -53,6 +55,11 @@ void EmployeeMenu::show() const {
             cout << "Enter date (YYYY-MM-DD): ";
             getline(cin, date);
 
+            if (!validateName(name) || !validatePrice(price) || !validateStock(stock) || !validateDate(date)) {
+                cout << "Invalid product data.\n";
+                continue;
+            }
+
             Product product(name, price, stock, date);
             if (product_repo.addProduct(product)) {
                 cout << "Product added successfully.\n";
@@ -99,6 +106,11 @@ void EmployeeMenu::show() const {
             cin.ignore();
             cout << "Enter new date: ";
             getline(cin, date);
+
+            if (!validateName(name) || !validatePrice(price) || !validateStock(stock) || !validateDate(date)) {
+                cout << "Invalid product data.\n";
+                continue;
+            }
 
             Product updated(name, price, stock, date);
             if (product_repo.updateProduct(id, updated)) {
