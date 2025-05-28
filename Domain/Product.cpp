@@ -3,6 +3,8 @@
 //
 
 #include "Product.h"
+
+#include <sstream>
 #include <string>
 
 int Product::nextID = 1;
@@ -24,3 +26,14 @@ void Product::setName(const string& newName) { name = newName; }
 void Product::setPrice(double newPrice) { price = newPrice; }
 void Product::setStock(int newStock) { stock = newStock; }
 void Product::setDate(const string& newDate) { expDate = newDate; }
+
+string Product::toString() const {
+	stringstream ss;
+	ss << "ID: " << id
+	   << ", Name: " << name
+	   << ", Price: " << price
+	   << ", Stock: " << stock
+	   << ", Expiry: " << expDate;
+	return ss.str();
+}
+
