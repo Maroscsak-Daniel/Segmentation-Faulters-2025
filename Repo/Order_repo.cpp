@@ -84,6 +84,7 @@ vector<Order> OrderRepository::findOrdersByEmployee(const string& employee) cons
     return result;
 }
 
+
 vector<Order> OrderRepository::findOrdersByStatus(Status status) const {
     vector<Order> result;
     for (const auto& order : orders) {

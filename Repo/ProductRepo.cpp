@@ -18,7 +18,7 @@ bool ProductRepo::productExists(const string& id) const {
 
 bool ProductRepo::addProduct(const Product& product) {
 	if (productExists(product.getId()))
-		return false;  // ID must be unique
+		return false;
 	products.push_back(product);
 	return true;
 }
