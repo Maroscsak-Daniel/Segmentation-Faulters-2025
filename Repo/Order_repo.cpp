@@ -21,14 +21,6 @@ Order* OrderRepository::findOrderById(const string& id) {
     return nullptr;
 }
 
-const Order* OrderRepository::findOrderById(const string& id) const {
-    for (const auto& order : orders) {
-        if (order.getId() == id) {
-            return &order;
-        }
-    }
-    return nullptr;
-}
 
 bool OrderRepository::confirmOrder(const string& id, const string& employee) {
     Order* order = findOrderById(id);
@@ -73,9 +65,6 @@ vector<Order> OrderRepository::getAllOrders() const {
     return orders;
 }
 
-const vector<Order>& OrderRepository::getOrders() const {
-    return orders;
-}
 
 vector<Order> OrderRepository::findOrdersByCustomer(const string& customer) const {
     vector<Order> result;
