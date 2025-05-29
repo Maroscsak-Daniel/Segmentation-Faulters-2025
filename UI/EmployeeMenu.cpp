@@ -205,7 +205,7 @@ void EmployeeMenu::show() const {
         }
         else if (option == 13) {
             string customer;
-            cout << "Enter customer name: ";
+            cout << "Enter customer email: ";
             getline(cin, customer);
             auto orders = order_repo.findOrdersByCustomer(customer);
             for (const auto& o : orders) {
@@ -248,7 +248,7 @@ void EmployeeMenu::show() const {
         }
         else if (option == 17) {
             string employee;
-            cout << "Enter employee name: ";
+            cout << "Enter employee email: ";
             getline(cin, employee);
             auto orders = order_repo.findOrdersByEmployee(employee);
             for (const auto& o : orders) {
