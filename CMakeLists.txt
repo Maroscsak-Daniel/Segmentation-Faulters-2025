@@ -42,6 +42,7 @@ add_executable(run_tests tests_main.cpp
         Tests/ProductTests.cpp
         Tests/ClientTests.cpp
         Tests/OrderTests.cpp
+        Tests/EmployeeTests.cpp
 )
 # Link the tests executable with the app_lib library
 target_link_libraries(run_tests app_lib)

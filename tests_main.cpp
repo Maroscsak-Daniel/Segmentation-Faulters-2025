@@ -8,8 +8,11 @@ void runProductTests();
 
 void runOrderTests();
 
+void runEmployeeTests();
+
 int main() {
 	runUserTests();
 	runProductTests();
 	runOrderTests();
+	runEmployeeTests();
 }
