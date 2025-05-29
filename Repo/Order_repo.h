@@ -24,10 +24,8 @@ public:
     bool takeOverOrder(const string& id, const string& employee);
 
     vector<Order> getAllOrders() const;
-    const vector<Order>& getOrders() const;
 
     Order* findOrderById(const string& id);
-    const Order* findOrderById(const string& id) const;
 
 
     vector<Order> findOrdersByStatus(Status status) const;

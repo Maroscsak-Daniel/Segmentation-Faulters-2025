@@ -36,10 +36,10 @@ void runOrderTests() {
     //Create Order with Repo
     OrderRepository repo;
     repo.createOrder(date, products, "", "emp1", Status::Reservation);
-    string id = repo.getOrders().at(0).getId();
+    string id = repo.getAllOrders().at(0).getId();
 
     cout << "[TEST 4] Order created and stored: ";
-    if (!id.empty() && repo.getOrders().size() == 1)
+    if (!id.empty() && repo.getAllOrders().size() == 1)
         cout << "PASSED\n";
     else
         cout << "FAILED\n";

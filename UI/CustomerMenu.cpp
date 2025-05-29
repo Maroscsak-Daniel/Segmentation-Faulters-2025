@@ -97,7 +97,7 @@ void CustomerMenu::show() {
         }
         else if (option == 7) {
             string customer;
-            cout << "Enter your name: ";
+            cout << "Enter your email: ";
             getline(cin, customer);
 
             auto orders = order_repo.findOrdersByCustomer(customer);
